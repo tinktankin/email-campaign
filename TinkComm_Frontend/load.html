@@ -180,150 +180,7 @@
             height: calc(100vh - 60px);
         }
 
-        /************************ HEADER AND LEFT PANEL END ********************************/
-
-        .navmail {
-            background-color: #FFF;
-            border-bottom: solid 1px #DDD;
-            height: 60px;
-            width: 100%;
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .navmail > label{
-            font-size: 14px;
-            color: #666666;
-            min-width: 100px;
-            text-align: center;
-        }
-
-        .navmail > div{
-            min-height: 40px;
-            min-width: 40px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 0;
-        }
-
-        .navmail > div > button{
-            width: 20px;
-            height: 20px;
-            border-radius: 20px;
-            text-align: center;
-            background-color: #FFF;
-            margin: 0 20px 0 20px;
-            font-size: 16px;
-            color: #AAA;
-            margin: 0;
-        }
-
-        .navmail > div > button:hover{
-            color: #666;
-            width: 40px;
-            height: 40px;
-            background-color: #EEE;
-            transition: 0.3s;
-        }
-
-        .navmail > div > button:active{
-            width: 20px;
-            height: 20px;
-            background-color: #FFF;
-            transition: 0.3s;
-        }
-
-        .messagebox {
-            display: grid;
-            grid-template-columns: 2fr 10fr 3fr repeat(2, 2fr);
-            grid-template-rows: 1fr 0.1fr 1fr;
-            grid-column-gap: 2px;
-            grid-row-gap: 2px;
-            height: 80px;
-            border-bottom: solid 1px #DDD;
-            padding: 10px;
-            box-sizing: border-box;
-        }
-
-        .div1 { grid-area: 1 / 1 / 2 / 2; }
-        .div2 { grid-area: 1 / 2 / 2 / 3; }
-        .div3 { grid-area: 2 / 1 / 3 / 3; }
-        .div4 { grid-area: 3 / 1 / 4 / 2; }
-        .div5 { grid-area: 3 / 2 / 4 / 3; }
-        .div6 { grid-area: 1 / 3 / 4 / 4; }
-        .div7 { grid-area: 1 / 4 / 4 / 5; }
-        .div8 { grid-area: 1 / 5 / 5 / 6; }
-
-        .div1, .div4{
-            display: flex;
-            align-items: center;
-            justify-content: flex-end;
-            margin-right: 10px;
-        }
-
-        .div2, .div5{
-            display: flex;
-            align-items: center;
-            justify-content: flex-start;
-            margin-left: 10px;
-        }
-
-        .div6, .div7, .div8{
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .div1{
-            font-size: 20px;
-        }
-
-        .div4{
-            font-size: 12px; 
-        }
-
-        .div6, .div2, .div5{
-            font-size: 14px;
-        }
-
-        .hr2{
-            margin: auto;
-            border-bottom: solid 0.6px #EEEEEE;
-            width: 90%;
-        }
-
-        .messagebox button{
-            height: 50px;
-            width: 50px;
-            border-radius: 25px;
-        }
-
-        .messagebox:hover{
-            background-color: #3187E1;
-            color: #FFF;
-            transition: 0.2s;
-        }
-
-        .messagebox button:hover{
-            background-color:#4698F0;
-            transition: 0.2s;
-        }
-
-        .messagebox:hover .far{
-            color: #FFF;
-        }
-
-        .far {
-            color: #3187E1;
-            font-size: 20px;
-        }
-
-        .messagebox div button{
-            background: transparent;
-        }
+    /************************ HEADER AND LEFT PANEL END ********************************/
 
     </style>
     <meta charset="UTF-8">
@@ -332,7 +189,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Racing+Sans+One&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/a076d05399.js"></script>
-    <title>Mailbox</title>
+    <title>Dashboard</title>
 </head>
 
 <body>
@@ -353,7 +210,7 @@
         <div class="nameblock"><label class="namelabel"><!--ANURAG--></label></div>
         <button class="composebtn">+ COMPOSE</button>
 
-        <div class="pagelink active"><i class="fas fa-inbox"></i><label>Inbox</label></div>
+        <div class="pagelink"><i class="fas fa-inbox"></i><label>Inbox</label></div>
         <div class="pagelink"><i class="fas fa-envelope-open-text"></i><label>Unread</label></div>
         <div class="pagelink"><i class="fas fa-paper-plane"></i><label>Sent</label></div>
         <div class="pagelink"><i class="fas fa-exclamation-circle"></i><label>Bounced</label></div>
@@ -366,29 +223,12 @@
         <div class="pagelink"><i class="fas fa-file-alt"></i><label>Forms</label></div>
         <div class="pagelink"><i class="fas fa-edit"></i><label>Templates</label></div>
         <div class="pagelink"><i class="fas fa-chart-line"></i><label>Stats</label></div>
-
     </div>
 
     <!---------------------------------- HEADER AND LEFT PANEL END --------------------------------------->
 
     <div class="rightbox">
-        <div class="navmail">
-            <div><button class="prevbtn"><i class="fas fa-chevron-left"></i></button></div>
-            <label class="numemails"><!--1-20 of 76--></label>
-            <div><button class="nextbtn"><i class="fas fa-chevron-right"></i></button></div>
-        </div>
-        <!--
-        <div class="messagebox">
-            <div class="div1"><label>Anurag</label></div>
-            <div class="div2"><label>anuraggupta29@outlook.com</label></div>
-            <div class="div3"><hr class="hr2"></div>
-            <div class="div4"><label>SUBJECT</label></div>
-            <div class="div5"><label>Welcome to the team Anurag!</label></div>
-            <div class="div6"><label>9: 23 PM | June 12, 2020</label></div>
-            <div class="div7"><button><i class="far fa-eye" aria-hidden="true"></i></button></div>
-            <div class="div8"><button><i class="far fa-trash-alt" aria-hidden="true"></i></button></div>
-        </div>
-        -->
+            <!--Write your code here-->
     </div>
 
     <script>
@@ -412,47 +252,6 @@
 
         //---------------------------------- HEADER AND LEFT PANEL END ---------------------------------------
 
-
-        var dummyData = [
-            {From:'Naman', Email:'naman@gmail.com', Subject:'Database deployed on the cloud', Date:'9: 23 PM | June 12, 2020'},
-            {From:'Hritik', Email:'hritik@gmail.com', Subject:'Task updated on Trello', Date:'3: 23 PM | June 12, 2020'},
-            {From:'Anurag', Email:'anurag@outlook.com', Subject:'Grant access to Github', Date:'10: 31 AM | June 12, 2020'},
-            {From:'Ashay', Email:'ashay@outlook.com', Subject:'Read receipts solution found', Date:'12: 11 PM | June 11, 2020'},
-            {From:'Tushar', Email:'tushar@gmail.com', Subject:'imaplib done and dusted', Date:'6: 13 PM | June 10, 2020'},
-            {From:'Naman', Email:'naman@gmail.com', Subject:'Database deployed on the cloud', Date:'9: 23 PM | June 12, 2020'},
-            {From:'Hritik', Email:'hritik@gmail.com', Subject:'Task updated on Trello', Date:'3: 23 PM | June 12, 2020'},
-            {From:'Anurag', Email:'anurag@outlook.com', Subject:'Grant access to Github', Date:'10: 31 AM | June 12, 2020'},
-            {From:'Ashay', Email:'ashay@outlook.com', Subject:'Read receipts solution found', Date:'12: 11 PM | June 11, 2020'},
-            {From:'Tushar', Email:'tushar@gmail.com', Subject:'imaplib done and dusted', Date:'6: 13 PM | June 10, 2020'},
-        ];
-
-        var htmlcontent;
-        var totalmails = 10;
-        var llimit = 1;
-        var ulimit = llimit + dummyData.length - 1;
-        document.querySelector('.numemails').textContent = String(llimit)+'-'+String(ulimit)+' of '+String(totalmails);
-
-
-        for (var j = 0; j < dummyData.length ; j++){
-            htmlcontent = `
-            <div class="messagebox">
-                <div class="div1"><label></label></div>
-                <div class="div2"><label></label></div>
-                <div class="div3"><hr class="hr2"></div>
-                <div class="div4"><label>SUBJECT</label></div>
-                <div class="div5"><label></label></div>
-                <div class="div6"><label></label></div>
-                <div class="div7"><button><i class="far fa-eye" aria-hidden="true"></i></button></div>
-                <div class="div8"><button><i class="far fa-trash-alt" aria-hidden="true"></i></button></div>
-            </div>
-            `
-            document.querySelector('.rightbox').insertAdjacentHTML('beforeend',htmlcontent);
-            msgbox = document.querySelector('.rightbox').lastElementChild;
-            msgbox.querySelector('.div1').firstElementChild.innerHTML = dummyData[j].From;
-            msgbox.querySelector('.div2').firstElementChild.innerHTML = dummyData[j].Email;
-            msgbox.querySelector('.div5').firstElementChild.innerHTML = dummyData[j].Subject;
-            msgbox.querySelector('.div6').firstElementChild.innerHTML = dummyData[j].Date;
-        }
     </script>
 </body>
 
