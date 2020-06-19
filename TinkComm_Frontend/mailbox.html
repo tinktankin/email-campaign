@@ -264,6 +264,11 @@
             margin-right: 10px;
         }
 
+        .div3{
+            display: flex;
+            align-items: center;
+        }
+
         .div2, .div5{
             display: flex;
             align-items: center;
@@ -353,19 +358,19 @@
         <div class="nameblock"><label class="namelabel"><!--ANURAG--></label></div>
         <button class="composebtn">+ COMPOSE</button>
 
-        <div class="pagelink active"><i class="fas fa-inbox"></i><label>Inbox</label></div>
-        <div class="pagelink"><i class="fas fa-envelope-open-text"></i><label>Unread</label></div>
-        <div class="pagelink"><i class="fas fa-paper-plane"></i><label>Sent</label></div>
-        <div class="pagelink"><i class="fas fa-exclamation-circle"></i><label>Bounced</label></div>
+        <div class="pagelink inboxbtn active"><i class="fas fa-inbox"></i><label>Inbox</label></div>
+        <div class="pagelink unreadbtn"><i class="fas fa-envelope-open-text"></i><label>Unread</label></div>
+        <div class="pagelink sentbtn"><i class="fas fa-paper-plane"></i><label>Sent</label></div>
+        <div class="pagelink bouncedbtn"><i class="fas fa-exclamation-circle"></i><label>Bounced</label></div>
         <hr class="hr1">
-        <div class="pagelink"><i class="fas fa-columns"></i><label>Dashboard</label></div>
+        <div class="pagelink dashboardbtn"><i class="fas fa-columns"></i><label>Dashboard</label></div>
         <hr class="hr1">
-        <div class="pagelink"><i class="fas fa-id-badge"></i><label>Contacts</label></div>
-        <div class="pagelink"><i class="fas fa-users"></i><label>Groups</label></div>
-        <div class="pagelink"><i class="fas fa-user-plus"></i><label>Campaigns</label></div>
-        <div class="pagelink"><i class="fas fa-file-alt"></i><label>Forms</label></div>
-        <div class="pagelink"><i class="fas fa-edit"></i><label>Templates</label></div>
-        <div class="pagelink"><i class="fas fa-chart-line"></i><label>Stats</label></div>
+        <div class="pagelink contactbtn"><i class="fas fa-id-badge"></i><label>Contacts</label></div>
+        <div class="pagelink groupbtn"><i class="fas fa-users"></i><label>Groups</label></div>
+        <div class="pagelink campaignbtn"><i class="fas fa-user-plus"></i><label>Campaigns</label></div>
+        <div class="pagelink formbtn"><i class="fas fa-file-alt"></i><label>Forms</label></div>
+        <div class="pagelink templatebtn"><i class="fas fa-edit"></i><label>Templates</label></div>
+        <div class="pagelink statbtn"><i class="fas fa-chart-line"></i><label>Stats</label></div>
 
     </div>
 
@@ -413,6 +418,7 @@
         //---------------------------------- HEADER AND LEFT PANEL END ---------------------------------------
 
 
+        //---------------------------------- SIMULATING BACKEND INTERACTION START -----------------------------------
         var dummyData = [
             {From:'Naman', Email:'naman@gmail.com', Subject:'Database deployed on the cloud', Date:'9: 23 PM | June 12, 2020'},
             {From:'Hritik', Email:'hritik@gmail.com', Subject:'Task updated on Trello', Date:'3: 23 PM | June 12, 2020'},
@@ -453,6 +459,16 @@
             msgbox.querySelector('.div5').firstElementChild.innerHTML = dummyData[j].Subject;
             msgbox.querySelector('.div6').firstElementChild.innerHTML = dummyData[j].Date;
         }
+        //---------------------------------- SIMULATING BACKEND INTERACTION END -----------------------------------
+
+        //---------------------------------- FRONTEND INTERACTION START -------------------------------------------
+
+        document.querySelector('.dashboardbtn').onclick = function () {
+        location.href = "dashboard.html";
+        }
+
+        //---------------------------------- FRONTEND INTERACTION END -------------------------------------------
+
     </script>
 </body>
 
