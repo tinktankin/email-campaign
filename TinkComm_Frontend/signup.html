@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <style type="text/css">
+    * {
+      margin: 0;
+      padding: 0;
+      border: 0;
+      outline: 0;
+      vertical-align: baseline;
+    }
+
+    html {
+      height: 100%;
+      box-sizing: border-box;
+      overflow-x: hidden;
+      background-attachment: fixed;
+      font-family: 'Open Sans', sans-serif;
+      font-weight: 400;
+    }
+
+    body {
+      background-color: #F6F7F8;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .logoblock {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        height: 100%;
+        margin: 100px auto 0 auto;
+    }
+
+    .logoicon {
+        height: 54px;
+        margin-right: 20px;
+    }
+
+    .logoname {
+        height: 54px;
+    }
+
+    .signup-form .headlabel {
+      font-size: 16px;
+      text-align: center;
+      color: #0d47a1;
+      margin-bottom: 30px;
+      font-weight: 600;
+      letter-spacing: 1px;
+    }
+
+    .signup-form .social-icon {
+      width: 100%;
+      font-size: 20px;
+      padding-top: 20px;
+      color: #fff;
+      text-align: center;
+      float: left;
+    }
+
+    .signup-form {
+      background: #FFF;
+      box-shadow: 0px 0px 12px 4px rgba(0, 0, 0, 0.05);
+      width: 400px;
+      top: 40px;
+      margin: 50px auto 150px auto;
+      display: table;
+      padding: 30px 50px 30px 50px;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      font-family: 'Open Sans', sans-serif;
+    }
+
+    .form-group {
+      float: left;
+      width: 100%;
+      margin: 0 0 15px;
+      position: relative;
+    }
+
+    .signup-form input {
+      width: 100%;
+      height: 40px;
+      border-radius: 20px;
+      border: 1px solid #ccc;
+      box-sizing: border-box;
+      font-size: 14px;
+      padding: 5px 20px 5px 50px;
+      font-family: 'Open Sans', sans-serif;
+    }
+
+    .signup-form .form-group .input-icon {
+      font-size: 15px;
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: -moz-box;
+      display: -ms-flexbox;
+      display: flex;
+      align-items: center;
+      position: absolute;
+      border-radius: 25px;
+      bottom: 0;
+      height: 100%;
+      padding-left: 20px;
+      color: #666;
+    }
+
+    .signup-form .signup-btn {
+      background: #0d47a1;
+      box-shadow: 0px 0px 4px 2px rgba(0,0,0,0.1);
+      color: #fff;
+      text-align: center;
+      font-size: 14px;
+      letter-spacing: 2px;
+      font-weight: 600;
+      border-radius: 20px;
+      width: 120px;
+      height: 36px;
+      box-sizing: border-box;
+      cursor: pointer;
+      margin-top: 10px;
+      font-family: 'Open Sans', sans-serif;
+    }
+
+    .signup-form .social-icon button {
+      font-size: 20px;
+      color: white;
+      height: 50px;
+      width: 50px;
+      border-radius: 60%;
+      margin: 0px 10px;
+      border: none;
+      cursor: pointer;
+    }
+
+    .login-link {
+      float: left;
+      width: 100%;
+      text-decoration: none;
+      color: #0d47a1;
+      font-size: 14px;
+      text-align: center;
+      margin-top: 11px;
+    }
+
+    .login-link:hover{
+      color: #AAA;
+    }
+
+    .login-link:active{
+      color: #333;
+    }
+
+    .googlebtn{
+      background-color: #DB4437;
+    }
+
+    .fbbtn{
+      background-color: #285397;
+    }
+
+    .linkedinbtn{
+      background-color: #0077B5;
+    }
+
+    .signup-form button:hover {
+      opacity: 0.9;
+    }
+
+    .signup-form .seperator {
+      float: left;
+      width: 100%;
+      border-top: 1px solid #ccc;
+      text-align: center;
+      margin: 50px 0 0;
+    }
+
+    .signup-form .seperator b {
+      width: 40px;
+      height: 40px;
+      font-size: 16px;
+      text-align: center;
+      line-height: 40px;
+      background: #fff;
+      display: inline-block;
+      border: 1px solid #e0e0e0;
+      border-radius: 50%;
+      position: relative;
+      top: -22px;
+      z-index: 1;
+    }
+
+    .signup-form p {
+      float: left;
+      width: 100%;
+      text-align: center;
+      font-size: 16px;
+      margin: 0 0 10px;
+    }
+
+    @media screen and (max-width:767px) {
+      body{
+        background-color: #FFF;
+      }
+      .signup-form {
+        box-shadow: 0px 0px 0px 0px;
+        width: 90%;
+        padding: 15px 15px 30px;
+      }
+    }
+  </style>
+  <title>Sign Up</title>
+  <meta charset="utf-8">
+  <link rel="icon" href="static/logo.svg">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+
+</head>
+
+<body>
+  <div class="logoblock">
+    <img class="logoicon" src="static/logo.svg">
+    <img class="logoname" src="static/logoname.svg">
+  </div>
+  <form class="signup-form">
+    <label class="headlabel">Signup for TinkComm</label>
+    <div class="form-group">
+      <input type="text" name="userid" placeholder="User-Id">
+      <span class="input-icon"><i class="fa fa-user"></i></span>
+    </div>
+    <div class="form-group">
+      <input type="email" name="email" placeholder="E-mail">
+      <span class="input-icon"><i class="fa fa-envelope"></i></span>
+    </div>
+    <div class="form-group">
+      <input type="password" name="psw" placeholder="Password">
+      <span class="input-icon"><i class="fa fa-lock"></i></span>
+    </div>
+    <div class="form-group">
+      <input type="password" name="psw" placeholder="Confirm-Password">
+      <span class="input-icon"><i class="fa fa-lock"></i></span>
+    </div>
+    <button class="signup-btn">CONTINUE</button>
+    <a class="login-link" href="#">Already have an account? Log in</a>
+    <div class="seperator"><b>or</b></div>
+    <p>Signup with your social media account</p>
+    <!-- Social signup buttons -->
+    <div class="social-icon">
+      <button type="button" class="googlebtn"><i class="fab fa-google"></i></button>
+      <button type="button" class="fbbtn"><i class="fab fa-facebook-f"></i></button>
+      <button type="button" class="linkedinbtn"><i class="fab fa-linkedin-in"></i></button>
+    </div>
+  </form>
+</body>
+
+</html>
+
+
