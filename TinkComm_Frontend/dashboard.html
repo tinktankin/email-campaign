@@ -223,6 +223,11 @@
             color: #000;
         }
 
+        .grouplist{
+            display: flex;
+            flex-direction: column;
+        }
+
         .groupbox {
             display: grid;
             grid-template-columns: 2fr 1fr;
@@ -493,6 +498,7 @@
                 <div class="tablist grouptab active"><label>GROUPS</label></div>
                 <div class="tablist campaigntab"><label>CAMPAIGNS</label></div>
             </div>
+            <div class="grouplist">
             <!--
             <div class="groupbox">
                 <div class="gbdiv1"><label>Technical</label></div>
@@ -501,6 +507,7 @@
                 <div class="gbdiv4"><label>9: 23 PM | June 12, 2020</label></div>
             </div>
             -->
+            </div>
         </div>
         <div class="historyblock">
             <div class="historyheader">
@@ -583,8 +590,8 @@
                 <div class="gbdiv4"><label></label></div>
             </div>
             `
-            document.querySelector('.mailblock').insertAdjacentHTML('beforeend',mailboxcontent);
-            grpbox = document.querySelector('.mailblock').lastElementChild;
+            document.querySelector('.grouplist').insertAdjacentHTML('beforeend',mailboxcontent);
+            grpbox = document.querySelector('.grouplist').lastElementChild;
             grpbox.querySelector('.gbdiv1').firstElementChild.innerHTML = lastData[j].Group;
             grpbox.querySelector('.gbdiv3').firstElementChild.innerHTML = lastData[j].Subject;
             grpbox.querySelector('.gbdiv4').firstElementChild.innerHTML = lastData[j].Date;
@@ -630,10 +637,10 @@
             });
         };
 
-        var groupboxes = document.querySelector('.mailblock').getElementsByClassName('groupbox');
+        var groupboxes = document.querySelector('.grouplist').getElementsByClassName('groupbox');
         for (var i = 0; i < groupboxes.length; i++) {
             groupboxes[i].addEventListener("click", function() {
-                var current = document.querySelector('.mailblock').getElementsByClassName("groupbox active");
+                var current = document.querySelector('.grouplist').getElementsByClassName("groupbox active");
                 if (current.length > 0){
                     current[0].className = current[0].className.replace(" active", "");
                 }
