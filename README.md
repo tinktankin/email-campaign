@@ -35,11 +35,12 @@ The email client will provide the following features:
 
 ## Developers
 <ul>
-<li>Anurag Gupta</li>
+<li>Ayush Saxena</li>
 <li>Naman Sharma</li>
 <li>Hritik Sunil Nandanwar</li>
 <li>Tushar Kumar</li>
 <li>Ashay Jain</li>
 <li>Chandra Shekhar</li>
 <li>Arun Balaji</li>
+<li>Anurag Gupta</li>
 </ul>
