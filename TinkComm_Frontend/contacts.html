@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            border: 0;
+            outline: 0;
+            vertical-align: baseline;
+        }
+
+        html {
+            height: 100%;
+            box-sizing: border-box;
+            overflow-x: hidden;
+            background-attachment: fixed;
+            font-family: 'Open Sans', sans-serif;
+            font-weight: 400;
+        }
+
+        /************************ HEADER AND LEFT PANEL START ********************************/
+
+        .headerbar {
+            overflow: hidden;
+            background-color: #FFF;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            height: 60px;
+            box-shadow: 0px 0px 12px 4px rgba(0, 0, 0, 0.05);
+            z-index: 1000;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logoblock {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            height: 100%;
+            padding-left: 32px;
+        }
+
+        .logoicon {
+            height: 36px;
+        }
+
+        .logoname {
+            min-width: 200px;
+            padding-left: 10px;
+            font-size: 24px;
+            color: #666666;
+            font-family: 'Racing Sans One', cursive;
+        }
+
+        .buttonblock {
+            height: 100%;
+            padding-right: 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-direction: row;
+        }
+
+        .buttonblock > button{
+            margin: 0px 0px 0px 20px;
+            height: 30px;
+            width: 120px;
+            background-color: #F6F7F8;
+            border-radius: 15px;
+            font-family: 'Open Sans', sans-serif;
+            color: #666666;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-evenly;
+            align-items: center;
+        }
+
+        .buttonblock > button:hover{
+            background-color: #333;
+            color: #FFF;
+            transition: 0.3s;
+        }
+
+        .buttonblock > button:active{
+            background-color: #666;
+        }
+
+
+        .leftpanel {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: flex-start;
+            align-content: flex-start;
+            padding-left: 40px;
+            padding-top: 20px;
+            overflow: hidden;
+            background-color: #F6F7F8;
+            position: fixed;
+            left: 0;
+            width: 280px;
+            margin-top: 60px;
+            height: calc(100vh - 60px);
+            box-sizing: border-box;
+            border-right: solid 1px #DDD;
+        }
+
+        .hr1{
+            margin: 20px 0 20px 0;
+            border-bottom: solid 1px #EEEEEE;
+            width: 90%;
+        }
+
+        .composebtn{
+            width: 120px;
+            min-height: 30px;
+            background-color: #3187E1;
+            border-radius: 15px;
+            font-family: 'Open Sans', sans-serif;
+            color: #FFF;
+            font-size: 14px;
+            letter-spacing: 1.5px;
+            margin: 15px 100px 15px 40px;
+            box-shadow: 0px 0px 4px 2px rgba(0,0,0,0.1);
+        }
+
+        .composebtn:hover{
+            background-color: #333;
+            transition: 0.3s;
+        }
+
+        .composebtn:active{
+            background-color: #666;
+        }
+
+        .pagelink{
+            margin-top: 6px;
+            margin-bottom: 6px;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            color: #666666;
+        }
+
+        .pagelink:hover{
+            color: #3187E1;
+        }
+
+        .pagelink.active{
+            color: #3187E1;
+        }
+
+        .pagelink > i{
+            width: 30px;
+        }
+
+        .welcomelabel{
+            color: #666666;
+        }
+
+        .nameblock{
+            margin-top: 0px;
+            font-size: 36px;
+            font-weight: 300;
+            color: #666666;
+            letter-spacing: 2px;
+        }
+
+        .rightbox {
+            overflow-x: hidden;
+            overflow-y: auto;
+            position: fixed;
+            right: 0;
+            width: calc(100vw - 280px);
+            margin-top: 60px;
+            height: calc(100vh - 60px);
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+        }
+        /************************ HEADER AND LEFT PANEL END ********************************/
+
+
+        /*add contacts from file + buttons css begin*/
+        .uploadBlock {
+            height: 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-direction: row;
+            width: 60%;
+            margin: 40px auto 0 auto;
+        }
+
+        #myfile {
+            display: None;
+        }
+
+        .uploadBlock > div{
+            display: flex;
+            align-items: center;
+        }
+
+        .uploadBlock > div > label{
+            min-width: 180px;
+        }
+
+        .uploadBlock > div > div{
+            height: 30px;
+            background-color: #EEE;
+            width: 300px;
+            border-radius: 15px;
+        }
+
+        .openfilebtn{
+            height: 30px;
+            background-color: #666;
+            border-radius: 15px;
+            color: #FFF;
+            font-size: 12px;
+            min-width: 80px;
+            font-family: 'Open Sans', sans-serif;
+            letter-spacing: 2px;
+            font-weight: 600;
+        }
+
+        .openfilebtn:hover {
+            background-color: #333;
+            transition: 0.2s;
+        }
+
+        .openfilebtn:active{
+            background-color: #666;
+        }
+
+        .filenamelabel{
+            color: #666;
+            margin-left: 10px;
+            font-size: 12px;
+        }
+
+        .uploadfilebtn, .addbtn, .uploadmanualbtn{
+            height: 30px;
+            background-color: #3187E1;
+            border-radius: 15px;
+            color: #FFF;
+            font-size: 12px;
+            min-width: 100px;
+            font-family: 'Open Sans', sans-serif;
+            letter-spacing: 2px;
+            font-weight: 600;
+            margin-left: 30px;
+            margin-right: 30px;
+        }
+
+        .uploadfilebtn:hover, .addbtn:hover, .uploadmanualbtn:hover{
+            background-color: #333;
+            transition: 0.2s;
+        }
+
+        .uploadfilebtn:active, .addbtn:active, .uploadmanualbtn:active {
+            background-color: #666;
+        }
+
+        /*add contacts from file + buttons css end*/
+
+
+        .seperator {
+            float: left;
+            width: 70%;
+            border-top: 1px solid #ccc;
+            text-align: center;
+            margin: 50px auto 20px auto;
+        }
+
+        .seperator b {
+            width: 40px;
+            height: 40px;
+            font-size: 16px;
+            text-align: center;
+            line-height: 40px;
+            background: #fff;
+            display: inline-block;
+            border: 1px solid #e0e0e0;
+            border-radius: 50%;
+            position: relative;
+            top: -22px;
+            z-index: 1;
+        }
+
+        /*add contact manually css begin*/
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.4);
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            box-shadow: 0px 0px 20px 10px rgba(0, 0, 0, 0.1);
+            margin-top: calc(50vh - 270px);
+            margin-left: auto;
+            margin-right: auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 640px;
+            height: 540px;
+            box-sizing: border-box;
+        }
+
+        .mapForm {
+            height: 90%;
+            width: 90%;
+            margin: 5% 5% 5% 5%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .close {
+            color: #aaaaaa;
+            float: right;
+            font-size: 36px;
+            line-height: 24px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: #3187E1;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .mapForm > div{
+            width: 100%;
+            height: 90%;
+            display: flex;
+            overflow-x: hidden;
+            overflow-y: auto;
+            margin-bottom: 20px;
+        }
+
+        .mapForm > div > div{
+            width: 50%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .mapForm input {
+            width: 240px;
+            min-height: 40px;
+            border-radius: 20px;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+            font-size: 12px;
+            padding: 5px 20px 5px 20px;
+            font-family: 'Open Sans', sans-serif;
+            margin-bottom: 30px;
+        }
+        /*add contact manually window css end*/
+
+
+        /*table css begin*/
+        .tablecontainer {
+            margin-top: 50px;
+            min-height: 540px;
+            width: 80%;
+            color: #FFFFFF;
+            overflow-x: scroll;
+            overflow-y: hidden;
+            border-radius: 0px;
+            margin-bottom: 50px;
+            box-shadow: 0px 0px 12px 4px rgba(0, 0, 0, 0.05);
+        }
+
+        .tableheader {
+            width: fit-content;
+            height: 40px;
+            display: table;
+            background-color: #333;
+            color: #FFFFFF;
+            font-size: 12px;
+            letter-spacing: 1.5px;
+            font-weight: 500;
+        }
+
+        .tableheader div {
+            min-width: 240px;
+            max-width: 240px;
+            text-align: center;
+            height: 100%;
+            display: table-cell;
+            vertical-align: middle;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            box-sizing: border-box;
+            padding: 0px 5px 0px 5px;
+
+        }
+
+        .resultSet {
+            width: fit-content;
+            height: 100%;
+            background-color: #FFFFFF;
+            font-size: 12px;
+            color: #333333;
+            letter-spacing: 1px;
+            font-weight: 500;
+            overflow-y: overlay;
+            overflow-x: hidden;
+            box-sizing: border-box;
+        }
+
+        .entry {
+            min-width: 100%;
+            width: fit-content;
+            height: 40px;
+            display: table;
+            box-sizing: border-box;
+        }
+
+        .entry div {
+            min-width: 240px;
+            max-width: 240px;
+            text-align: center;
+            height: 100%;
+            display: table-cell;
+            vertical-align: middle;
+            border: 1px solid #DDD;
+            box-sizing: border-box;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            padding: 0px 5px 0px 5px;
+        }
+
+        /*Table css end*/
+
+    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="static/logo.svg">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Racing+Sans+One&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <title>Contacts</title>
+</head>
+
+<body>
+    <!---------------------------------- HEADER AND LEFT PANEL START --------------------------------------->
+    <div class="headerbar">
+        <div class="logoblock">
+            <img class="logoicon" src="static/logo.svg">
+            <label class="logoname">TinkComm</label>
+        </div>
+        <div class="buttonblock">
+            <label class="emailid"><!--anuraggupta29@outlook.com--></label>
+            <button class="accountpagelink"><i class="fas fa-user"></i><label>ACCOUNT</label></button>
+            <button class="logoutlink"><i class="fas fa-sign-out-alt"></i><label>LOGOUT</label></button>
+        </div>
+    </div>
+    <div class="leftpanel">
+        <div class="welcomelabel"><label>WELCOME</label></div>
+        <div class="nameblock"><label class="namelabel"><!--ANURAG--></label></div>
+        <button class="composebtn">+ COMPOSE</button>
+
+        <div class="pagelink inboxbtn"><i class="fas fa-inbox"></i><label>Inbox</label></div>
+        <div class="pagelink unreadbtn"><i class="fas fa-envelope-open-text"></i><label>Unread</label></div>
+        <div class="pagelink sentbtn"><i class="fas fa-paper-plane"></i><label>Sent</label></div>
+        <div class="pagelink bouncedbtn"><i class="fas fa-exclamation-circle"></i><label>Bounced</label></div>
+        <hr class="hr1">
+        <div class="pagelink dashboardbtn"><i class="fas fa-columns"></i><label>Dashboard</label></div>
+        <hr class="hr1">
+        <div class="pagelink contactbtn active"><i class="fas fa-id-badge"></i><label>Contacts</label></div>
+        <div class="pagelink groupbtn"><i class="fas fa-users"></i><label>Groups</label></div>
+        <div class="pagelink campaignbtn"><i class="fas fa-user-plus"></i><label>Campaigns</label></div>
+        <div class="pagelink formbtn"><i class="fas fa-file-alt"></i><label>Forms</label></div>
+        <div class="pagelink templatebtn"><i class="fas fa-edit"></i><label>Templates</label></div>
+        <div class="pagelink statbtn"><i class="fas fa-chart-line"></i><label>Stats</label></div>
+    </div>
+
+    <!---------------------------------- HEADER AND LEFT PANEL END --------------------------------------->
+
+    <div class="rightbox">
+
+        <!--file input handle, always hidden-->
+        <form id='formElement' method="POST" enctype="multipart/form-data">
+            <input type="file" id="myfile" name="myfile"
+                accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel">
+            <!--<input type="submit" name="upload_file" value="" class="inputUploadButton">-->
+        </form>
+
+        <!--Upload file block-->
+        <div class="uploadBlock">
+            <div>
+                <label>Upload a contacts file</label>
+                <div>
+                    <button class="openfilebtn">OPEN</button>
+                    <label class="filenamelabel"></label>
+                </div>
+            </div>
+            <button class="uploadfilebtn">UPLOAD</button>
+        </div>
+
+        <div class="seperator"><b>or</b></div>
+
+        <!--Add contaacts manually block with button-->
+        <div class="manualuploadblock">
+            <label>Add contacts manually</label>
+            <button class="addbtn">ADD</button>
+        </div>
+
+        <!--Table to view contacts-->
+        <div class="tablecontainer">
+            <div class="tableheader">
+                <!--<div class="indexNoCol">INDEX NO</div>
+                <div class="nameCol">NAME</div>
+                <div class="firstNameCol">FIRST NAME</div>
+                <div class="middleNameCol">MIDDLE NAME</div>
+                <div class="lastNameCol">LAST NAME</div>-->
+            </div>
+            <div class="resultSet">
+                <!--<div class="entry">
+                    <div class="indexNoCol"></div>
+                    <div class="nameCol"></div>
+                    <div class="firstNameCol"></div>
+                    <div class="middleNameCol"></div>
+                    <div class="lastNameCol"></div>
+                </div>-->
+            </div>
+        </div>
+    </div>
+
+    <!--Add contact manually window 'myModal', 'modal-content'-->
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <form class="mapForm">
+                <div>
+                    <div class="leftform">
+                        <input type="text" name="name" placeholder="Name">
+                        <input type="text" name="firstname" placeholder="First Name">
+                        <input type="text" name="middlename" placeholder="Middle Name">
+                        <input type="text" name="lastname" placeholder="Last Name">
+                        <input type="text" name="group" placeholder="Group">
+                        <input type="text" name="subgroup" placeholder="Sub Group">
+                        <input type="text" name="status" placeholder="Status">
+                        <input type="text" name="company" placeholder="Company">
+                        <input type="text" name="deignation" placeholder="Designation">
+                        <input type="text" name="gender" placeholder="Gender">
+                        <input type="text" name="title" placeholder="Title">
+                        <input type="text" name="department" placeholder="Department">
+                        <input type="text" name="university" placeholder="University">
+                        <input type="text" name="degree" placeholder="Degree">
+                        <input type="text" name="passingyear" placeholder="Passing Year">
+                        <input type="text" name="college" placeholder="College">
+                        <input type="text" name="ctc" placeholder="CTC">
+                    </div>
+                    <div class="rightform">
+                        <input type="text" name="emailid" placeholder="Email ID">
+                        <input type="text" name="alternateemailid" placeholder="Alternate Email ID">
+                        <input type="text" name="phone" placeholder="Phone">
+                        <input type="text" name="alternatephone" placeholder="Alternate Phone">
+                        <input type="text" name="city" placeholder="City">
+                        <input type="text" name="address" placeholder="Address">
+                        <input type="text" name="state" placeholder="State">
+                        <input type="text" name="country" placeholder="Country">
+                        <input type="text" name="zip" placeholder="ZIP">
+                        <input type="text" name="industry" placeholder="Industry">
+                        <input type="text" name="keyskills" placeholder="Key Skills">
+                        <input type="text" name="totalexperience" placeholder="Total Experience">
+                        <input type="text" name="yearsinbusiness" placeholder="Years in Business">
+                        <input type="text" name="turnover" placeholder="Turnover">
+                        <input type="text" name="dateofincorporation" placeholder="Date of Incorporation">
+                        <input type="text" name="employees" placeholder="Employees">
+                    </div>
+                </div>
+                <button class="uploadmanualbtn">UPLOAD</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+
+        //---------------------------------- HEADER AND LEFT PANEL START ---------------------------------------
+
+        var leftpanel = document.querySelector('.leftpanel');
+        var pagelinks = leftpanel.getElementsByClassName('pagelink');
+        for (var i = 0; i < pagelinks.length; i++) {
+            pagelinks[i].addEventListener("click", function() {
+                var current = document.getElementsByClassName("active");
+                if (current.length > 0){
+                    current[0].className = current[0].className.replace(" active", "");
+                }
+                this.className += " active";
+            });
+        };
+
+        document.querySelector('.namelabel').textContent = 'SUNEIL'
+        document.querySelector('.emailid').textContent = 'suniel.stanly@gmail.com'
+
+        //---------------------------------- HEADER AND LEFT PANEL END ---------------------------------------
+
+        //----file input replacement to improve UI
+        filehandle = document.getElementById('myfile')
+        openexcel = document.querySelector('.openfilebtn')
+
+        openexcel.addEventListener('click', function () {
+            filehandle.click();
+        })
+
+        var fileUpload = document.getElementById('myfile');
+
+        fileUpload.onchange = function (evt) {
+            if (fileUpload.value != "") {
+                if (typeof (FileReader) != "undefined") {
+                    document.querySelector('.filenamelabel').innerHTML = fileUpload.files[0].name;
+                }
+            }
+        };
+
+        //-----file input replacement end
+
+        //-----add contacts manually window
+        var modal = document.getElementById("myModal");
+        var manualadd = document.querySelector('.addbtn');
+        var mapform = document.querySelector('.mapForm');
+        var span = document.querySelector('.close');
+
+
+        manualadd.onclick = function () {
+        mapform.style.display = "flex";
+        modal.style.display = "block";
+        }
+
+        span.onclick = function () {
+        modal.style.display = "none";
+        }
+
+        window.onclick = function (event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+            }
+        }
+        //------add contacts manually window end
+
+        //----simulating loading data to table
+
+        htmlcontent = `<div class="contactidH"><label>ID</label></div>
+            <div class="nameH"><label>Name</label></div>
+            <div class="firstNameH"><label>First Name</label></div>
+            <div class="middleNameH"><label>Middle Name</label></div>
+            <div class="lastNameH"><label>Last Name</label></div>`
+            
+        document.querySelector('.tableheader').insertAdjacentHTML('beforeend', htmlcontent);
+
+        var i;
+        var htmlcontent;
+        for (i = 0; i < 50; i++) {
+        htmlcontent = `<div class="entry">
+            <div class="contactid"></div>
+            <div class="name"></div>
+            <div class="firstName">
+            </div><div class="middleName">
+            </div><div class="lastName"></div>
+            </div>`
+
+        document.querySelector('.resultSet').insertAdjacentHTML('beforeend', htmlcontent);
+        }
+
+        //simulating loading data to table end
+
+    </script>
+</body>
+
+</html>

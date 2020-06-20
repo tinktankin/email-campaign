@@ -183,6 +183,7 @@
 
     /************************ HEADER AND LEFT PANEL END ********************************/
 
+        /*mailblock (list of groups and campaigns) css begin*/
         .mailblock{
             display: flex;
             flex-direction: column;
@@ -228,6 +229,7 @@
             flex-direction: column;
         }
 
+        /*block of each group or campaign css begin*/
         .groupbox {
             display: grid;
             grid-template-columns: 2fr 1fr;
@@ -283,7 +285,11 @@
             color: #FFF;
             transition: 0.2s;
         }
+        /*block of each group or campaign css end*/
+        /*mailblock (list of groups and campaigns) css end*/
 
+
+        /*history block css begin*/
         .historyblock{
             background-color: #F6F7F8;
             display: flex;
@@ -339,6 +345,8 @@
             background-color: #666;
         }
 
+
+        /*mail history box css begin*/
         .mailhistory{
             display: flex;
             flex-direction: column;
@@ -349,6 +357,8 @@
             box-sizing: border-box;
         }
 
+
+        /*message box of each email css begin*/
         .messagebox {
             display: grid;
             grid-template-columns: 8fr 1fr;
@@ -444,6 +454,9 @@
         .seenbtn:hover{
             background-color: #333;
         }
+        /*message box of each email css end*/
+        /*mail history css end*/
+        /*history box css end*/
 
         
 
@@ -493,6 +506,7 @@
     <!---------------------------------- HEADER AND LEFT PANEL END --------------------------------------->
 
     <div class="rightbox">
+
         <div class="mailblock">
             <div class="mailtabs">
                 <div class="tablist grouptab active"><label>GROUPS</label></div>
@@ -509,6 +523,8 @@
             -->
             </div>
         </div>
+
+
         <div class="historyblock">
             <div class="historyheader">
                 <div>
@@ -522,6 +538,8 @@
                     <button class="composehistorybtn">+ COMPOSE</button>
                 </div>
             </div>
+
+            
             <div class="mailhistory">
                 <!--
                 <div class="messagebox">
