@@ -2,341 +2,18 @@
 <html lang="en">
 
 <head>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            border: 0;
-            outline: 0;
-            vertical-align: baseline;
-        }
-
-        html {
-            height: 100%;
-            box-sizing: border-box;
-            overflow-x: hidden;
-            background-attachment: fixed;
-            font-family: 'Open Sans', sans-serif;
-            font-weight: 400;
-        }
-
-        /************************ HEADER AND LEFT PANEL START ********************************/
-
-        .headerbar {
-            overflow: hidden;
-            background-color: #FFF;
-            position: fixed;
-            top: 0;
-            width: 100%;
-            height: 60px;
-            box-shadow: 0px 0px 12px 4px rgba(0, 0, 0, 0.05);
-            z-index: 1000;
-            display: flex;
-            flex-direction: row;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logoblock {
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            height: 100%;
-            padding-left: 32px;
-        }
-
-        .logoicon {
-            height: 36px;
-        }
-
-        .logoname {
-            min-width: 200px;
-            padding-left: 10px;
-            font-size: 24px;
-            color: #666666;
-            font-family: 'Racing Sans One', cursive;
-        }
-
-        .buttonblock {
-            height: 100%;
-            padding-right: 40px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-direction: row;
-        }
-
-        .buttonblock > button{
-            margin: 0px 0px 0px 20px;
-            height: 30px;
-            width: 120px;
-            background-color: #F6F7F8;
-            border-radius: 15px;
-            font-family: 'Open Sans', sans-serif;
-            color: #666666;
-            display: flex;
-            flex-direction: row;
-            justify-content: space-evenly;
-            align-items: center;
-        }
-
-        .buttonblock > button:hover{
-            background-color: #333;
-            color: #FFF;
-            transition: 0.3s;
-        }
-
-        .buttonblock > button:active{
-            background-color: #666;
-        }
-
-
-        .leftpanel {
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-start;
-            align-items: flex-start;
-            align-content: flex-start;
-            padding-left: 40px;
-            padding-top: 20px;
-            overflow: hidden;
-            background-color: #F6F7F8;
-            position: fixed;
-            left: 0;
-            width: 280px;
-            margin-top: 60px;
-            height: calc(100vh - 60px);
-            box-sizing: border-box;
-            border-right: solid 1px #DDD;
-        }
-
-        .hr1{
-            margin: 20px 0 20px 0;
-            border-bottom: solid 1px #EEEEEE;
-            width: 90%;
-        }
-
-        .composebtn{
-            width: 120px;
-            min-height: 30px;
-            background-color: #3187E1;
-            border-radius: 15px;
-            font-family: 'Open Sans', sans-serif;
-            color: #FFF;
-            font-size: 14px;
-            letter-spacing: 1.5px;
-            margin: 15px 100px 15px 40px;
-            box-shadow: 0px 0px 4px 2px rgba(0,0,0,0.1);
-        }
-
-        .composebtn:hover{
-            background-color: #333;
-            transition: 0.3s;
-        }
-
-        .composebtn:active{
-            background-color: #666;
-        }
-
-        .pagelink{
-            margin-top: 6px;
-            margin-bottom: 6px;
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            color: #666666;
-        }
-
-        .pagelink:hover{
-            color: #3187E1;
-        }
-
-        .pagelink.active{
-            color: #3187E1;
-        }
-
-        .pagelink > i{
-            width: 30px;
-        }
-
-        .welcomelabel{
-            color: #666666;
-        }
-
-        .nameblock{
-            margin-top: 0px;
-            font-size: 36px;
-            font-weight: 300;
-            color: #666666;
-            letter-spacing: 2px;
-        }
-
-        .rightbox {
-            overflow-x: hidden;
-            position: fixed;
-            right: 0;
-            width: calc(100vw - 280px);
-            margin-top: 60px;
-            height: calc(100vh - 60px);
-        }
-
-        /************************ HEADER AND LEFT PANEL END ********************************/
-
-        .navmail {
-            background-color: #FFF;
-            border-bottom: solid 1px #DDD;
-            height: 60px;
-            width: 100%;
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .navmail > label{
-            font-size: 14px;
-            color: #666666;
-            min-width: 100px;
-            text-align: center;
-        }
-
-        .navmail > div{
-            min-height: 40px;
-            min-width: 40px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 0;
-        }
-
-        .navmail > div > button{
-            width: 20px;
-            height: 20px;
-            border-radius: 20px;
-            text-align: center;
-            background-color: #FFF;
-            margin: 0 20px 0 20px;
-            font-size: 16px;
-            color: #AAA;
-            margin: 0;
-        }
-
-        .navmail > div > button:hover{
-            color: #666;
-            width: 40px;
-            height: 40px;
-            background-color: #EEE;
-            transition: 0.3s;
-        }
-
-        .navmail > div > button:active{
-            width: 20px;
-            height: 20px;
-            background-color: #FFF;
-            transition: 0.3s;
-        }
-
-        .messagebox {
-            display: grid;
-            grid-template-columns: 2fr 10fr 3fr repeat(2, 2fr);
-            grid-template-rows: 1fr 0.1fr 1fr;
-            grid-column-gap: 2px;
-            grid-row-gap: 2px;
-            height: 80px;
-            border-bottom: solid 1px #DDD;
-            padding: 10px;
-            box-sizing: border-box;
-        }
-
-        .div1 { grid-area: 1 / 1 / 2 / 2; }
-        .div2 { grid-area: 1 / 2 / 2 / 3; }
-        .div3 { grid-area: 2 / 1 / 3 / 3; }
-        .div4 { grid-area: 3 / 1 / 4 / 2; }
-        .div5 { grid-area: 3 / 2 / 4 / 3; }
-        .div6 { grid-area: 1 / 3 / 4 / 4; }
-        .div7 { grid-area: 1 / 4 / 4 / 5; }
-        .div8 { grid-area: 1 / 5 / 5 / 6; }
-
-        .div1, .div4{
-            display: flex;
-            align-items: center;
-            justify-content: flex-end;
-            margin-right: 10px;
-        }
-
-        .div3{
-            display: flex;
-            align-items: center;
-        }
-
-        .div2, .div5{
-            display: flex;
-            align-items: center;
-            justify-content: flex-start;
-            margin-left: 10px;
-        }
-
-        .div6, .div7, .div8{
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .div1{
-            font-size: 20px;
-        }
-
-        .div4{
-            font-size: 12px; 
-        }
-
-        .div6, .div2, .div5{
-            font-size: 14px;
-        }
-
-        .hr2{
-            margin: auto;
-            border-bottom: solid 0.6px #EEEEEE;
-            width: 90%;
-        }
-
-        .messagebox button{
-            height: 50px;
-            width: 50px;
-            border-radius: 25px;
-        }
-
-        .messagebox:hover{
-            background-color: #3187E1;
-            color: #FFF;
-            transition: 0.2s;
-        }
-
-        .messagebox button:hover{
-            background-color:#4698F0;
-            transition: 0.2s;
-        }
-
-        .messagebox:hover .far{
-            color: #FFF;
-        }
-
-        .far {
-            color: #3187E1;
-            font-size: 20px;
-        }
-
-        .messagebox div button{
-            background: transparent;
-        }
-
-    </style>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="static/logo.svg">
+    
+    <link rel="icon" href="static/images/logo.svg">
+
+    <link rel='stylesheet' href='static/css/mailbox.css' />
+    <link rel='stylesheet' href='static/css/load.css' />
+
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Racing+Sans+One&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+
     <title>Mailbox</title>
 </head>
 
@@ -344,7 +21,7 @@
     <!---------------------------------- HEADER AND LEFT PANEL START --------------------------------------->
     <div class="headerbar">
         <div class="logoblock">
-            <img class="logoicon" src="static/logo.svg">
+            <img class="logoicon" src="static/images/logo.svg">
             <label class="logoname">TinkComm</label>
         </div>
         <div class="buttonblock">
@@ -376,6 +53,12 @@
 
     <!---------------------------------- HEADER AND LEFT PANEL END --------------------------------------->
 
+
+
+
+
+    
+
     <div class="rightbox">
         <div class="navmail">
             <div><button class="prevbtn"><i class="fas fa-chevron-left"></i></button></div>
@@ -396,80 +79,9 @@
         -->
     </div>
 
-    <script>
 
-        //---------------------------------- HEADER AND LEFT PANEL START ---------------------------------------
-
-        var leftpanel = document.querySelector('.leftpanel');
-        var pagelinks = leftpanel.getElementsByClassName('pagelink');
-        for (var i = 0; i < pagelinks.length; i++) {
-            pagelinks[i].addEventListener("click", function() {
-                var current = document.getElementsByClassName("active");
-                if (current.length > 0){
-                    current[0].className = current[0].className.replace(" active", "");
-                }
-                this.className += " active";
-            });
-        };
-
-        document.querySelector('.namelabel').textContent = 'SUNEIL'
-        document.querySelector('.emailid').textContent = 'suniel.stanly@gmail.com'
-
-        //---------------------------------- HEADER AND LEFT PANEL END ---------------------------------------
-
-
-        //---------------------------------- SIMULATING BACKEND INTERACTION START -----------------------------------
-        var dummyData = [
-            {From:'Naman', Email:'naman@gmail.com', Subject:'Database deployed on the cloud', Date:'9: 23 PM | June 12, 2020'},
-            {From:'Hritik', Email:'hritik@gmail.com', Subject:'Task updated on Trello', Date:'3: 23 PM | June 12, 2020'},
-            {From:'Anurag', Email:'anurag@outlook.com', Subject:'Grant access to Github', Date:'10: 31 AM | June 12, 2020'},
-            {From:'Ashay', Email:'ashay@outlook.com', Subject:'Read receipts solution found', Date:'12: 11 PM | June 11, 2020'},
-            {From:'Tushar', Email:'tushar@gmail.com', Subject:'imaplib done and dusted', Date:'6: 13 PM | June 10, 2020'},
-            {From:'Naman', Email:'naman@gmail.com', Subject:'Database deployed on the cloud', Date:'9: 23 PM | June 12, 2020'},
-            {From:'Hritik', Email:'hritik@gmail.com', Subject:'Task updated on Trello', Date:'3: 23 PM | June 12, 2020'},
-            {From:'Anurag', Email:'anurag@outlook.com', Subject:'Grant access to Github', Date:'10: 31 AM | June 12, 2020'},
-            {From:'Ashay', Email:'ashay@outlook.com', Subject:'Read receipts solution found', Date:'12: 11 PM | June 11, 2020'},
-            {From:'Tushar', Email:'tushar@gmail.com', Subject:'imaplib done and dusted', Date:'6: 13 PM | June 10, 2020'},
-        ];
-
-        var htmlcontent;
-        var totalmails = 10;
-        var llimit = 1;
-        var ulimit = llimit + dummyData.length - 1;
-        document.querySelector('.numemails').textContent = String(llimit)+'-'+String(ulimit)+' of '+String(totalmails);
-
-
-        for (var j = 0; j < dummyData.length ; j++){
-            htmlcontent = `
-            <div class="messagebox">
-                <div class="div1"><label></label></div>
-                <div class="div2"><label></label></div>
-                <div class="div3"><hr class="hr2"></div>
-                <div class="div4"><label>SUBJECT</label></div>
-                <div class="div5"><label></label></div>
-                <div class="div6"><label></label></div>
-                <div class="div7"><button><i class="far fa-eye" aria-hidden="true"></i></button></div>
-                <div class="div8"><button><i class="far fa-trash-alt" aria-hidden="true"></i></button></div>
-            </div>
-            `
-            document.querySelector('.rightbox').insertAdjacentHTML('beforeend',htmlcontent);
-            msgbox = document.querySelector('.rightbox').lastElementChild;
-            msgbox.querySelector('.div1').firstElementChild.innerHTML = dummyData[j].From;
-            msgbox.querySelector('.div2').firstElementChild.innerHTML = dummyData[j].Email;
-            msgbox.querySelector('.div5').firstElementChild.innerHTML = dummyData[j].Subject;
-            msgbox.querySelector('.div6').firstElementChild.innerHTML = dummyData[j].Date;
-        }
-        //---------------------------------- SIMULATING BACKEND INTERACTION END -----------------------------------
-
-        //---------------------------------- FRONTEND INTERACTION START -------------------------------------------
-
-        document.querySelector('.dashboardbtn').onclick = function () {
-        location.href = "dashboard.html";
-        }
-
-        //---------------------------------- FRONTEND INTERACTION END -------------------------------------------
-
-    </script>
+    <script src="static/js/mailbox.js"></script>
+    <script src="static/js/load.js"></script>
 </body>
 
 </html>
