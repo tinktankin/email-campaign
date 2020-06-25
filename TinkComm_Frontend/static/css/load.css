@@ -164,6 +164,9 @@ html {
     font-weight: 300;
     color: #666666;
     letter-spacing: 2px;
+    max-width: 200px;
+    display: flex;
+    align-items: flex-start;
 }
 
 .rightbox {

@@ -12,7 +12,10 @@ for (var i = 0; i < pagelinks.length; i++) {
     });
 };
 
-document.querySelector('.namelabel').textContent = 'SUNEIL'
+var name = 'SUNEIL STANLY'
+document.querySelector('.namelabel').textContent = name.split(' ')[0];
+fitty(document.querySelector('.namelabel'));
+
 document.querySelector('.emailid').textContent = 'suniel.stanly@gmail.com'
 
 //---------------------------------- HEADER AND LEFT PANEL END ---------------------------------------
