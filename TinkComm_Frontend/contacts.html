@@ -62,14 +62,7 @@
 
     <div class="rightbox">
 
-        <!--file input handle, always hidden-->
-        <form id='formElement' method="POST" enctype="multipart/form-data">
-            <input type="file" id="myfile" name="myfile"
-                accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel">
-            <!--<input type="submit" name="upload_file" value="" class="inputUploadButton">-->
-        </form>
-
-        <!--Upload file block-->
+                <!--Upload file block-->
         <div class="uploadBlock">
             <div>
                 <label>Upload a contacts file</label>
@@ -78,7 +71,14 @@
                     <label class="filenamelabel"></label>
                 </div>
             </div>
-            <button class="uploadfilebtn">UPLOAD</button>
+            
+            <!--file input handle, always hidden-->
+            <form id='formElement' method="POST" enctype="multipart/form-data">
+                <input type="file" id="myfile" name="myfile"
+                    accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel">
+                <!--<input type="submit" name="upload_file" value="" class="inputUploadButton">-->
+                <button class="uploadfilebtn">UPLOAD</button>
+            </form>
         </div>
 
         <div class="seperator"><b>or</b></div>
