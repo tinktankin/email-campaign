@@ -1,0 +1,220 @@
+.rightbox {
+    overflow-x: hidden;
+    position: fixed;
+    right: 0;
+    width: calc(100vw - 280px);
+    margin-top: 60px;
+    height: calc(100vh - 60px);
+    padding: 40px 0 0 40px;
+    box-sizing: border-box;
+}
+
+.hr3{
+    margin: 5px auto 5px auto;
+    border-bottom: solid 1px #AAA;
+}
+
+
+.manageemail, .addemailid, .changepassword, .changename, .changephoto{
+    width: 500px;
+    margin-bottom: 60px;
+}
+
+.manageemail > .singleemailid{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    height: 40px;
+    border-bottom: solid 0.6px #DDD;
+}
+
+.makedefaultbtn, .removebtn{
+    padding: 0 10px 0 10px;
+    height: 24px;
+    border-radius: 15px;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 600;
+    letter-spacing: 2px;
+    font-size: 10px;
+    margin-left: 10px;
+    background-color: #EEE;
+    color: #333;
+}
+
+.removebtn:hover{
+    background-color: #DC143C;
+    color: #FFF;
+}
+
+.makedefaultbtn:hover{
+    background-color: #3187E1;
+    color: #FFF;
+}
+
+.addemailid > form, .changepassword > form, .changename form, .changephoto form{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.addemailid > form > div, .changepassword > form > div, .changename > form > div, .changephoto > div{
+    width: 100%;
+    height: 40px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.addemailid select, .changepassword select {
+    float: right;
+    width: 240px;
+    padding: 10px 30px 10px 20px;
+    background: url("../images/caretdown.svg") no-repeat right #fff;
+    appearance: none;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    background-position: calc(100% - 16px);
+    background-size: 24px 14px;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    color: #555555;
+    overflow:hidden; 
+    white-space:nowrap; 
+    text-overflow:ellipsis;
+
+}
+
+.addemailid input, .changepassword input, .changename input {
+    width: 240px;
+    height: 30px;
+    border-radius: 20px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    font-size: 14px;
+    padding: 5px 20px 5px 20px;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.accountformbtn{
+    padding: 0 20px 0 20px;
+    height: 30px;
+    background-color: #3187E1;
+    border-radius: 15px;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 600;
+    letter-spacing: 2px;
+    font-size: 12px;
+    margin: 20px 0 0 0;
+    color: #FFF;    
+}
+
+.accountformbtn:hover{
+    background-color: #333;
+}
+
+#myphoto {
+    display: None;
+}
+
+.changephoto .dummyfilehandle{
+    height: 30px;
+    background-color: #EEE;
+    width: 300px;
+    border-radius: 15px;
+}
+
+.openfilebtn{
+    height: 30px;
+    background-color: #666;
+    border-radius: 15px;
+    color: #FFF;
+    font-size: 12px;
+    min-width: 80px;
+    font-family: 'Open Sans', sans-serif;
+    letter-spacing: 2px;
+    font-weight: 600;
+}
+
+.openfilebtn:hover{
+    background-color: #333;
+}
+
+.filenamelabel{
+    color: #666;
+    margin-left: 10px;
+    font-size: 12px;
+}
+
+.changeaccountpasswordbtn {
+    height: 24px;
+    background-color: #FFF;
+    border-radius: 15px;
+    color: #DC143C;
+    font-size: 10px;
+    font-family: 'Open Sans', sans-serif;
+    letter-spacing: 2px;
+    font-weight: 600;
+    padding: 0 20px 0 20px;
+    margin-bottom: 100px;
+    box-shadow: 0px 0px 6px 2px rgba(0,0,0,0.05);
+}
+
+.changeaccountpasswordbtn:hover{
+    background-color: #DC143C;
+    color: #FFF;
+}
+
+.sectionlabel{
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 2px;
+}
+
+button:active{
+    opacity: 80%;
+}
+
+.accountdetails{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 400px;
+    height: 400px;
+    position: fixed;
+    right: 100px;
+    top: calc(50vh - 200px);
+    margin-left: 0px;
+}
+
+.userimage{
+    width: 200px;
+    height: 200px;
+    border-radius: 100px;
+}
+
+.completenamelabel{
+    margin: 10px 0 10px 0;
+    font-size: 24px;
+}
+
+.accountdetails div{
+    height: 40px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: solid 0.6px #DDD;
+    font-size: 14px;
+}
+
+
+@media only screen and (max-width: 1359px) , screen and (max-height: 539px) {
+    .accountdetails{
+        display: none;
+    }
+  }

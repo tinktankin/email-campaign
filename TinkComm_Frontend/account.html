@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="icon" href="static/images/logo.svg">
+
+    <link rel='stylesheet' href='static/css/account.css' />
+    <link rel='stylesheet' href='static/css/load.css' />
+
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Racing+Sans+One&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+
+    <title>Account Details</title>
+</head>
+
+<body>
+    <!---------------------------------- HEADER AND LEFT PANEL START --------------------------------------->
+    <div class="headerbar">
+        <div class="logoblock">
+            <img class="logoicon" src="static/images/logo.svg">
+            <label class="logoname">TinkComm</label>
+        </div>
+        <div class="buttonblock">
+            <label class="emailid"><!--anuraggupta29@outlook.com--></label>
+            <button class="accountpagelink"><i class="fas fa-user"></i><label>ACCOUNT</label></button>
+            <button class="logoutlink"><i class="fas fa-sign-out-alt"></i><label>LOGOUT</label></button>
+        </div>
+    </div>
+    <div class="leftpanel">
+        <div class="welcomelabel"><label>WELCOME</label></div>
+        <div class="nameblock"><label class="namelabel"><!--ANURAG--></label></div>
+        <button class="composebtn">+ COMPOSE</button>
+
+        <div class="pagelink inboxbtn"><i class="fas fa-inbox"></i><label>Inbox</label></div>
+        <div class="pagelink unreadbtn"><i class="fas fa-envelope-open-text"></i><label>Unread</label></div>
+        <div class="pagelink sentbtn"><i class="fas fa-paper-plane"></i><label>Sent</label></div>
+        <div class="pagelink bouncedbtn"><i class="fas fa-exclamation-circle"></i><label>Bounced</label></div>
+        <hr class="hr1">
+        <div class="pagelink dashboardbtn"><i class="fas fa-columns"></i><label>Dashboard</label></div>
+        <hr class="hr1">
+        <div class="pagelink contactbtn"><i class="fas fa-id-badge"></i><label>Contacts</label></div>
+        <div class="pagelink groupbtn"><i class="fas fa-users"></i><label>Groups</label></div>
+        <div class="pagelink campaignbtn"><i class="fas fa-user-plus"></i><label>Campaigns</label></div>
+        <div class="pagelink formbtn"><i class="fas fa-file-alt"></i><label>Forms</label></div>
+        <div class="pagelink templatebtn"><i class="fas fa-edit"></i><label>Templates</label></div>
+        <div class="pagelink statbtn"><i class="fas fa-chart-line"></i><label>Stats</label></div>
+    </div>
+    <!---------------------------------- HEADER AND LEFT PANEL END --------------------------------------->
+
+
+
+
+
+    
+    <div class="rightbox">
+        <!--Write your code here-->
+        <div class="manageemail">
+            <label class="sectionlabel">Manage all email IDs</label>
+            <hr class="hr3">
+            <!--
+            <div class="singleemailid">
+                <label>Email 1</label>
+                <div>
+                    <button class="makedefaultbtn">MAKE DEFAULT</button>
+                    <button class="removebtn">REMOVE</button>
+                </div>
+            </div>
+            -->
+        </div>
+
+        <div class="addemailid">
+            <label class="sectionlabel">Add Email ID</label>
+            <hr class="hr3">
+            <form>
+                <div><label>Email Service Provider</label><select id="selectprovider" name="selectprovider"size="1"><option value="gmail">Gmail</option><option value="outlook">Outlook</option></select></div>
+                <div><label>Enter email ID</label><input type="text" name="newemailid" placeholder="Enter email"></div>
+                <div><label>Enter password</label><input type="password" name="newemailpassword" placeholder="Enter password"></div>
+                <div><label>Confirm password</label><input type="password" name="confirmnewemailpassword" placeholder="Confirm password"></div>
+                <button class="accountformbtn addemailidbtn">ADD EMAIL</button>
+            </form>
+        </div>
+
+        <div class="changepassword">
+            <label class="sectionlabel">Change password for an email ID</label>
+            <hr class="hr3">
+            <form>
+                <div><label>Select Email ID</label><select id="selectemailid" name="selectemailid" size="1"></select>
+                </div>
+                <div><label>Enter old password</label><input type="password" name="oldpassword" placeholder="Old password"></div>
+                <div><label>Enter new password</label><input type="password" name="newpassword" placeholder="New password"></div>
+                <div><label>Confirm new password</label><input type="password" name="confirmpassword" placeholder="Confirm password"></div>
+                <button class="accountformbtn changepasswordbtn">CHANGE PASSWORD</button>
+            </form>
+        </div>
+
+        <div class="changename">
+            <label class="sectionlabel">Change your Name</label>
+            <hr class="hr3">
+            <form>
+                <div>
+                    <label>Enter New Name</label>
+                    <input type="text" name="newname" placeholder="Enter Name">
+                </div>
+                <button class="accountformbtn changepasswordbtn">CHANGE NAME</button>
+            </form>
+        </div>
+
+        <div class="changephoto">
+            <label class="sectionlabel">Change your Photo</label>
+            <hr class="hr3">
+            
+            <div>
+                <label>Upload a new photo</label>
+                <div class="dummyfilehandle">
+                    <button class="openfilebtn">OPEN</button>
+                    <label class="filenamelabel"></label>
+                </div>
+            </div>
+            <form>
+                <input type="file" id="myphoto" name="myphoto"
+                    accept="image/x-png,image/gif,image/jpeg">
+                <!--<input type="submit" name="upload_file" value="" class="inputUploadButton">-->
+                <button class="accountformbtn uploadfilebtn">UPLOAD</button>
+            </form>
+        </div>
+
+        <div><button class="changeaccountpasswordbtn">CHANGE ACCOUNT PASSWORD</button></div>
+
+        <div class="accountdetails">
+            <img class="userimage" src="static/images/userimage.svg">
+            <label class="completenamelabel"></label>
+            <div>
+                <label class="personallabel">Username</label>
+                <label class="usernamelabel"></label>
+            </div>
+            <div>
+                <label class="personallabel">Account Email</label>
+                <label class="accountemaillabel"></label>
+            </div>
+            <div>
+                <label class="personallabel">Default Email</label>
+                <label class="defaultemaillabel"></label>
+            </div>
+
+        </div>
+
+    </div>
+
+    <script src="static/js/account.js"></script>
+    <script src="static/js/load.js"></script>
+</body>
+
+</html>
