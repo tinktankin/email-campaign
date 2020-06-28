@@ -157,10 +157,11 @@
         <div><button class="changeaccountpasswordbtn" onclick="ACC()">CHANGE ACCOUNT PASSWORD</button></div>
 {%endif%}
         <div class="accountdetails">
-            {% if image is None%}
-            <img class="userimage" src="#">
-            {%else%}
+            {% if image.url is not null%}
             <img class="userimage" src="{{image.url}}">
+            
+            {%else%}
+            <img class="userimage" src="#">
             {%endif%}
             <label class="completenamelabel"></label>
             <div>
