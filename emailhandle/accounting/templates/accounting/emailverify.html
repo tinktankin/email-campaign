@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+{%load staticfiles%}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{%static 'css/signup.css'%}">
+    <meta name="_token" content="{{ csrf_token }}">
+  <title>Form</title>
+  <meta charset="utf-8">
+  <link rel="icon" href="{% static 'svg/logo.svg'%}">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+
+</head>
+
+<body>
+    <div class="logoblock">
+        <img class="logoicon" src="{% static 'svg/logo.svg'%}">
+        <img class="logoname" src="{% static 'svg/logoname.svg'%}">
+    </div>
+  <div class="signup-form">
+{%csrf_token%}
+    <label class="headlabel">Verify Your Email</label>
+      <div class="form-group">
+      <input type="text" name="name" value="{{name}}" readonly>
+      <span class="input-icon"><i class="fa fa-user"></i></span>
+    </div>
+    <div class="form-group">
+      <input type="text" name="userid" value="{{username}}" readonly>
+      <span class="input-icon"><i class="fa fa-user"></i></span>
+    </div>
+    <div class="form-group">
+      <input type="email" name="email" value="{{email}}" readonly>
+      <span class="input-icon"><i class="fa fa-envelope"></i></span>
+    </div>
+
+	<button  name="type" value="start" class="signup-btn" onclick="getemail()">Get Email</button>
+
+  </div>
+
+<SCRIPT src="{%static 'js/email/email.js'%}"></SCRIPT>
+</body>
+
+</html>

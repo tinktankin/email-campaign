@@ -1,0 +1,16 @@
+body{
+animation:change 20s infinite;
+}
+@keyframes change{
+0%{background-color:#f2a2e7;}
+10%{background-color:#a38585;}
+20%{background-color:#8fecef;}
+30%{background-color:#f7d89b;}
+40%{background-color:#929cf4;}
+50%{background-color:#93ef8d;}
+60%{background-color:#bbd642;}
+70%{background-color:#edbdf2;}
+80%{background-color:#04f7f7;}
+90%{background-color:#e104f9;}
+100%{background-color:#16f9a2;}
+}

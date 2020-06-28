@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {%load staticfiles%}
+    <meta charset="UTF-8">
+     <meta name="_token" content="{{ csrf_token }}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="icon" href="{%static 'svg/logo.svg'%}">
+
+    <link rel="stylesheet" href="{%static 'css/group.css'%}">
+    <link rel='stylesheet' href="{%static 'css/account/addemail.css'%}">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Racing+Sans+One&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+
+    <title>Manage Group</title>
+</head>
+
+<body>
+    <!---------------------------------- HEADER AND LEFT PANEL START --------------------------------------->
+    <div class="headerbar">
+        <div class="logoblock">
+            <img class="logoicon" src="{%static 'svg/logo.svg'%}">
+            <label class="logoname">TinkComm</label>
+        </div>
+        <div class="buttonblock">
+            <label class="emailid">{{email}}</label>
+            <button class="accountpagelink"><i class="fas fa-user"></i><label>ACCOUNT</label></button>
+   <button class="logoutlink" onclick="logout()"><i class="fas fa-sign-out-alt"></i><label>LOGOUT</label></button>
+        </div>
+    </div>
+    <div class="leftpanel">
+        <div class="welcomelabel"><label>WELCOME</label></div>
+        <div class="nameblock"><label class="namelabel">{{name}}</label></div>
+        <button class="composebtn">+ COMPOSE</button>
+
+        <div class="pagelink inboxbtn"><i class="fas fa-inbox"></i><label>Inbox</label></div>
+        <div class="pagelink unreadbtn"><i class="fas fa-envelope-open-text"></i><label>Unread</label></div>
+        <div class="pagelink sentbtn"><i class="fas fa-paper-plane"></i><label>Sent</label></div>
+        <div class="pagelink bouncedbtn"><i class="fas fa-exclamation-circle"></i><label>Bounced</label></div>
+        <hr class="hr1">
+        <div class="pagelink dashboardbtn"><i class="fas fa-columns"></i><label>Dashboard</label></div>
+        <hr class="hr1">
+        <div class="pagelink contactbtn"><i class="fas fa-id-badge"></i><label>Contacts</label></div>
+        <div class="pagelink groupbtn"><i class="fas fa-users"></i><label>Groups</label></div>
+        <div class="pagelink campaignbtn"><i class="fas fa-user-plus"></i><label>Campaigns</label></div>
+        <div class="pagelink formbtn"><i class="fas fa-file-alt"></i><label>Forms</label></div>
+        <div class="pagelink templatebtn"><i class="fas fa-edit"></i><label>Templates</label></div>
+        <div class="pagelink statbtn"><i class="fas fa-chart-line"></i><label>Stats</label></div>
+    </div>
+    <!---------------------------------- HEADER AND LEFT PANEL END --------------------------------------->
+
+
+
+
+
+
+    <div class="rightbox">
+        <br>
+    	<br>
+
+        <!--Add contaacts manually block with button-->
+        <div class="add">
+
+            <button class="addbtn" id="addbtn">+ Group</button>
+        </div>
+            <table class="blueTable">
+		<thead>
+		<tr>
+		<th>SERIAL NO</th>
+		<th>GROUPS</th>
+		<th>MEMBERS</th>
+		<th>VIEWS</th>
+		</tr>
+		</thead>
+<tbody>
+		<tr>
+		<td>1</td><td>Team 1</td><td>8</td><td><button class="viewbutton">VIEW</button></td></tr>
+		<tr>
+		<td>2</td><td>Team 2</td><td>2</td><td><button class="viewbutton">VIEW</button></td></tr>
+		<tr>
+		<td>3</td><td>Team 3</td><td>3</td><td><button class="viewbutton">VIEW</button></td></tr>
+		<tr>
+		<td>4</td><td>Team 4</td><td>5</td><td><button class="viewbutton">VIEW</button></td></tr>
+		<tr>
+		<td>5</td><td>Team 5</td><td>7</td><td><button class="viewbutton">VIEW</button></td></tr>
+		<tr>
+		<td>6</td><td>Team 6</td><td>4</td><td><button class="viewbutton">VIEW</button></td></tr>
+		<tr>
+		<td>7</td><td>Team 7</td><td>3</td><td><button class="viewbutton">VIEW</button></td></tr>
+		<tr>
+		<td>8</td><td>Team 8</td><td>3</td><td><button class="viewbutton">VIEW</button></td></tr>
+		<tr>
+		<td>9</td><td>Team 9</td><td>2</td><td><button class="viewbutton">VIEW</button></td></tr>
+		</tbody>
+		</tr>
+		</table>
+<div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div style="background-color: #3187E1; border-radius: 5px;">
+        <h4 style="text-align: center; color: white;">Create Group</h4>
+
+    </div>
+            <form class="mapForm">
+            	<input type="text" name="group" placeholder="Group">
+            	<input type="text" name="info" placeholder="INFO">
+            	<button class="uploadmanualbtn">Add</button>
+
+
+
+                   <div class="container">
+                      <div class="row">
+                        <div class="col-12">
+                          <table class="table table-bordered" style="width:100px; border: 1px solid black; margin-left:auto;margin-right:auto;">
+                            <tbody>
+                              <tr>
+                                <td>
+                                  <div class="custom-control custom-checkbox">
+                                      <input type="checkbox" class="custom-control-input" id="customCheck1" >
+                                      <label class="custom-control-label" for="customCheck2"></label>
+                                  </div>
+                                </td>
+                                <td>Suniel Stanley</td>
+                                <td>suniel.stanley@gmail.com</td>
+                                <td>Hyderabad</td>
+                              </tr>
+                              <tr>
+                                <td>
+                                  <div class="custom-control custom-checkbox">
+                                      <input type="checkbox" class="custom-control-input" id="customCheck2">
+                                      <label class="custom-control-label" for="customCheck2"></label>
+                                  </div>
+                                </td>
+                                <td>Arun</td>
+                                <td>arun@gamil.com</td>
+                                <td>Mumbai</td>
+                              </tr>
+                              <tr>
+                                <td>
+                                  <div class="custom-control custom-checkbox">
+                                      <input type="checkbox" class="custom-control-input" id="customCheck3">
+                                      <label class="custom-control-label" for="customCheck3"></label>
+                                  </div>
+                                </td>
+                                <td>Ayush</td>
+                                <td>ayush@yahoo.com</td>
+                                <td>Banglore</td>
+                              </tr>
+                               <tr>
+                                <td>
+                                  <div class="custom-control custom-checkbox">
+                                      <input type="checkbox" class="custom-control-input" id="customCheck3">
+                                      <label class="custom-control-label" for="customCheck3"></label>
+                                  </div>
+                                </td>
+                                <td>Ashay Jain</td>
+                                <td>ashayjain@outlook.com</td>
+                                <td>Indore</td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                </div>
+                <button class="uploadmanualbtn">UPLOAD</button>
+            </form>
+        </div>
+</div>
+    </div>
+    <div class="bg-modal"></div>
+</body>
+ <script src="{%static 'js/account/addemail.js'%}"></script>
+</html>
+

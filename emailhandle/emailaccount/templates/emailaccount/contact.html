@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {%load staticfiles%}
+     <meta charset="UTF-8">
+     <meta name="_token" content="{{ csrf_token }}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="icon" href="{%static 'svg/logo.svg'%}">
+
+    <link rel='stylesheet' href="{%static 'css/account/dashboard.css'%}" />
+    <link rel='stylesheet' href="{%static 'css/account/addemail.css'%}">
+    <link rel='stylesheet' href="{%static 'css/contact.css'%}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Racing+Sans+One&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+
+    <title>Contacts</title>
+</head>
+
+<body>
+    <!---------------------------------- HEADER AND LEFT PANEL START --------------------------------------->
+    <div class="headerbar">
+        <div class="logoblock">
+            <img class="logoicon" src="{%static 'svg/logo.svg'%}">
+            <label class="logoname">TinkComm</label>
+        </div>
+        <div class="buttonblock">
+            <label class="emailid">
+                {{email}}</label>
+            <button class="accountpagelink"><i class="fas fa-user"></i><label>ACCOUNT</label></button>
+            <button class="logoutlink" onclick="logout()"><i class="fas fa-sign-out-alt"></i><label>LOGOUT</label></button>
+        </div>
+    </div>
+    <div class="leftpanel">
+        <div class="welcomelabel"><label>WELCOME</label></div>
+        <div class="nameblock"><label class="namelabel">
+                {{name}}</label></div>
+        <button class="composebtn">+ COMPOSE</button>
+
+        <div class="pagelink inboxbtn"><i class="fas fa-inbox"></i><label>Inbox</label></div>
+        <div class="pagelink unreadbtn"><i class="fas fa-envelope-open-text"></i><label>Unread</label></div>
+        <div class="pagelink sentbtn"><i class="fas fa-paper-plane"></i><label>Sent</label></div>
+        <div class="pagelink bouncedbtn"><i class="fas fa-exclamation-circle"></i><label>Bounced</label></div>
+        <hr class="hr1">
+        <div class="pagelink dashboardbtn"><i class="fas fa-columns"></i><label>Dashboard</label></div>
+        <hr class="hr1">
+        <div class="pagelink contactbtn active"><i class="fas fa-id-badge"></i><label>Contacts</label></div>
+        <div class="pagelink groupbtn"><i class="fas fa-users"></i><label>Groups</label></div>
+        <div class="pagelink campaignbtn"><i class="fas fa-user-plus"></i><label>Campaigns</label></div>
+        <div class="pagelink formbtn"><i class="fas fa-file-alt"></i><label>Forms</label></div>
+        <div class="pagelink templatebtn"><i class="fas fa-edit"></i><label>Templates</label></div>
+        <div class="pagelink statbtn"><i class="fas fa-chart-line"></i><label>Stats</label></div>
+    </div>
+
+    <!---------------------------------- HEADER AND LEFT PANEL END --------------------------------------->
+
+
+
+
+<div class="rightbox">
+
+                <!--Upload file block-->
+        <div class="uploadBlock">
+            <div>
+                <label>Upload a contacts file</label>
+                <div>
+                    <button class="openfilebtn">OPEN</button>
+                    <label class="filenamelabel"></label>
+                </div>
+            </div>
+
+            <!--file input handle, always hidden-->
+            <form id='formElement' method="POST" enctype="multipart/form-data" action="{%url 'emailaccount:contactfile'%}">
+                {%csrf_token%}
+
+
+                <input type="hidden" value="{{id}}" name="id" id="id">
+                {%for field in form%}
+                {{field}}
+                {%endfor%}
+                <!--<input type="submit" name="upload_file" value="" class="inputUploadButton">-->
+                <button type="submit" name="type" value="start" class="uploadfilebtn">UPLOAD</button>
+            </form>
+        </div>
+
+        <div class="seperator"><b>or</b></div>
+
+        <!--Add contaacts manually block with button-->
+        <div class="manualuploadblock">
+            <label>Add contacts manually</label>
+            <button class="addbtn">ADD</button>
+        </div>
+
+        <!--Table to view contacts-->
+        <div class="tablecontainer">
+            <div class="tableheader">
+                <div class="indexNoCol">INDEX NO</div>
+                <div class="nameCol">NAME</div>
+                <div class="firstNameCol">FIRST NAME</div>
+                <div class="middleNameCol">MIDDLE NAME</div>
+                <div class="lastNameCol">LAST NAME</div>
+            </div>
+            <div class="resultSet">
+                {%for contact in c%}
+                <div class="entry">
+
+                    <div class="indexNoCol">{{contact.c_email}}</div>
+                    <div class="nameCol">{{contact.c_name}}</div>
+                    <div class="firstNameCol">{{contact.c_first_name}}</div>
+                    <div class="middleNameCol">{{contact.c_middle_name}}</div>
+                    <div class="lastNameCol">{{contact.c_last_name}}</div>
+
+                </div>
+                {%endfor%}
+            </div>
+        </div>
+    </div>
+
+    <!--Add contact manually window 'myModal', 'modal-content'-->
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <form class="mapForm" method="post" action="{%url 'emailaccount:addaccount'%}">
+                {%csrf_token%}
+                <div>
+                    <div class="leftform">
+                        <input type="hidden" value="{{id}}" name="id">
+                        <input type="text" name="name" placeholder="Name" required>
+                        <input type="text" name="firstname" placeholder="First Name">
+                        <input type="text" name="middlename" placeholder="Middle Name">
+                        <input type="text" name="lastname" placeholder="Last Name">
+                        <input type="text" name="group" placeholder="Group">
+                        <input type="text" name="subgroup" placeholder="Sub Group">
+                        <input type="text" name="status" placeholder="Status">
+                        <input type="text" name="company" placeholder="Company">
+                        <input type="text" name="deignation" placeholder="Designation">
+                        <input type="text" name="gender" placeholder="Gender">
+                        <input type="text" name="title" placeholder="Title">
+                        <input type="text" name="department" placeholder="Department">
+                        <input type="text" name="university" placeholder="University">
+                        <input type="text" name="degree" placeholder="Degree">
+                        <input type="text" name="passingyear" placeholder="Passing Year">
+                        <input type="text" name="college" placeholder="College">
+                        <input type="text" name="ctc" placeholder="CTC">
+                    </div>
+                    <div class="rightform">
+                        <input type="text" name="emailid" placeholder="Email ID" required>
+                        <input type="text" name="alternateemailid" placeholder="Alternate Email ID">
+                        <input type="text" name="phone" placeholder="Phone">
+                        <input type="text" name="alternatephone" placeholder="Alternate Phone">
+                        <input type="text" name="city" placeholder="City">
+                        <input type="text" name="address" placeholder="Address">
+                        <input type="text" name="state" placeholder="State">
+                        <input type="text" name="country" placeholder="Country">
+                        <input type="text" name="zip" placeholder="ZIP">
+                        <input type="text" name="industry" placeholder="Industry">
+                        <input type="text" name="keyskills" placeholder="Key Skills">
+                        <input type="text" name="totalexperience" placeholder="Total Experience">
+                        <input type="text" name="yearsinbusiness" placeholder="Years in Business">
+                        <input type="text" name="turnover" placeholder="Turnover">
+                        <input type="text" name="dateofincorporation" placeholder="Date of Incorporation">
+                        <input type="text" name="employees" placeholder="Employees">
+                    </div>
+                </div>
+
+            <button type="submit" value="start" name="type" class="uploadmanualbtn">UPLOAD</button>
+            </form>
+        </div>
+    </div>
+
+{%if error%}
+    <script>
+    alert("Email id Aleready Exists");
+    </script>
+    {%endif%}
+
+
+
+   <script src="{%static 'js/account/addemail.js'%}"></script>
+<script src="{%static 'js/account/ajax.js'%}"></script>
+    <script src="{%static 'js/account/ajax2.js'%}"></script>
+<script src="{%static 'js/contact.js'%}"></script>
+
+</body>
+
+</html>
+
