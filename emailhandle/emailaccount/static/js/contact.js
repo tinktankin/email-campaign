@@ -25,14 +25,14 @@ for (var i = 0; i < pagelinks.length; i++) {
 
 
 //----file input replacement to improve UI
-filehandle = document.getElementById('id_myfile')
+filehandle = document.getElementById('myfile')
 openexcel = document.querySelector('.openfilebtn')
 
 openexcel.addEventListener('click', function () {
     filehandle.click();
 })
 
-var fileUpload = document.getElementById('id_myfile');
+var fileUpload = document.getElementById('myfile');
 
 fileUpload.onchange = function (evt) {
     if (fileUpload.value != "") {
