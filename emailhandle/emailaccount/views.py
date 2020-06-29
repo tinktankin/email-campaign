@@ -78,7 +78,7 @@ def mailbox(request):
         return redirect('accounting:login')
 def contactfile(request):
     type=request.POST.get('type')
-    if request.method == 'POST' and request.FILES['myfile']:
+    if type=='start' and request.FILES['myfile']:
         id=request.POST.get('id')
         ids=int(id)
         a=Account.objects.get(pk=ids)
@@ -197,6 +197,9 @@ def remove(request):
     if type=="start":
         id=request.POST.get('button')
         e=EmailAccounts.objects.filter(pk=id)
+        if email.e_email==account_detail.defaultaccount:
+            account_detail.defaultaccount=None
+            account_detail.save()
         e.delete()
         data={
             'is_delete':'de'
