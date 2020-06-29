@@ -88,7 +88,11 @@
             </div>
             -->
         </div>
-{%endif%}
+{%else%}
+        <script>
+            alert('Add gmail/outlook email first');
+        </script>
+        {%endif%}
         <div class="addemailid">
             <label class="sectionlabel">Add Email ID</label>
             <hr class="hr3">
@@ -97,7 +101,7 @@
                 <div><input type="hidden" name="id" value="{{id}}" id="id"></div>
                 <div><label>Email Service Provider</label><select id="selectprovider" name="selectprovider"size="1"><option value="gmail">Gmail</option><option value="outlook">Outlook</option></select></div>
                 <div><label>Enter email ID</label><input id="email" type="text" id="newemailid" name="newemailid" placeholder="Enter email" required></div>
-                <div><label>Enter password</label><input id="psw" type="password" id="newemailpassword" name="newemailpassword" placeholder="Enter password" required></div>
+                <div><label>Add app password</label><input id="psw" type="password" id="newemailpassword" name="newemailpassword" placeholder="Enter password" required></div>
                 <div><label>Confirm password</label><input id="psw1" type="password" id="confirmnewemailpassword" name="confirmnewemailpassword" placeholder="Confirm password" required></div>
                 <button class="accountformbtn addemailidbtn">ADD EMAIL</button>
             </form>
@@ -159,7 +163,7 @@
         <div class="accountdetails">
             {% if image.url is not null%}
             <img class="userimage" src="{{image.url}}">
-            
+
             {%else%}
             <img class="userimage" src="#">
             {%endif%}
