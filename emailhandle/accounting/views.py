@@ -245,7 +245,7 @@ def googlelogin(request):
     email=request.POST.get('email')
     if name is not None:
         if Account.objects.filter(provider="Google",email=email,token_id=id).exists():
-            account=Account.objects.get(provider="Google",name=name,email=email,token_id=id)
+            account=Account.objects.get(provider="Google",email=email,token_id=id)
             ac_id=str(account.id)
             create_session(s,ac_id)
             data={
@@ -268,7 +268,7 @@ def facebooklogin(request):
     email=request.POST.get('email')
     if name is not None:
         if Account.objects.filter(email=email,token_id=id).exists():
-            account=Account.objects.get(provider="Facebook",name=name,email=email,token_id=id)
+            account=Account.objects.get(provider="Facebook",email=email,token_id=id)
             ac_id=str(account.id)
             create_session(s,ac_id)
             data={
