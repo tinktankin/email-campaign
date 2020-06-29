@@ -1,0 +1,8 @@
+####These are required#######
+pip intsall django==2.2
+pip install cryptography
+pip install django-mongoengine
+pip install django-allauth
+pip install djongo
+pip install pymong[srv]
+#####Do not share username and password and secret key and encrypted key#####
