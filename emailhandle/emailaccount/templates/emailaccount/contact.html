@@ -74,16 +74,15 @@
             </div>
 
             <!--file input handle, always hidden-->
-            <form id='formElement' method="POST" enctype="multipart/form-data" action="{%url 'emailaccount:contactfile'%}">
+             <form id='formElement' method="POST" enctype="multipart/form-data" action="{%url 'emailaccount:contactfile'%}">
                 {%csrf_token%}
 
 
                 <input type="hidden" value="{{id}}" name="id" id="id">
-                {%for field in form%}
-                {{field}}
-                {%endfor%}
+                <input type="file" id="myfile" name="myfile"
+                    accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel">
                 <!--<input type="submit" name="upload_file" value="" class="inputUploadButton">-->
-                <button type="submit" name="type" value="start" class="uploadfilebtn">UPLOAD</button>
+                <button type="submit" value="start" name="type" class="uploadfilebtn">UPLOAD</button>
             </form>
         </div>
 
