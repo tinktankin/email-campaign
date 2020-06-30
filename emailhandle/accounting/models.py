@@ -1,6 +1,6 @@
 from datetime import date
 from django.db.models.signals import post_save
-
+from django.core.validators import FileExtensionValidator
 from django.utils.timezone import datetime
 from djongo import models
 
@@ -43,6 +43,7 @@ class EmailAccounts(models.Model):
 
 class Contactlist(models.Model):
     c_id=models.ForeignKey(Account,on_delete=models.CASCADE)
+    contact_id=models.CharField(max_length=50,default=None)
     c_name=models.CharField(max_length=50)
     c_first_name=models.CharField(max_length=50,default=None)
     c_middle_name=models.CharField(max_length=50,default=None)
@@ -81,7 +82,7 @@ class Contactlist(models.Model):
 class ContactlistFile(models.Model):
     cf_id=models.ForeignKey(Account,on_delete=models.CASCADE)
     date=models.DateTimeField(default=datetime.now())
-    myfile=models.FileField(upload_to=user_directory_path)
+    myfile=models.FileField(upload_to=user_directory_path,validators=[FileExtensionValidator(allowed_extensions=['xlsx','csv'])])
 
 class Group(models.Model):
     g_id=models.ForeignKey(Account,on_delete=models.CASCADE)
