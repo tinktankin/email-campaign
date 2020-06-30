@@ -70,11 +70,14 @@
                 <div>
                     <button class="openfilebtn">OPEN</button>
                     <label class="filenamelabel"></label>
+
                 </div>
+
             </div>
 
+
             <!--file input handle, always hidden-->
-             <form id='formElement' method="POST" enctype="multipart/form-data" action="{%url 'emailaccount:contactfile'%}">
+            <form id='formElement' method="POST" enctype="multipart/form-data" action="{%url 'emailaccount:contactfile'%}">
                 {%csrf_token%}
 
 
@@ -82,9 +85,17 @@
                 <input type="file" id="myfile" name="myfile"
                     accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel">
                 <!--<input type="submit" name="upload_file" value="" class="inputUploadButton">-->
+
                 <button type="submit" value="start" name="type" class="uploadfilebtn">UPLOAD</button>
+
             </form>
+
+                <!--<input type="submit" name="upload_file" value="" class="inputUploadButton">-->
         </div>
+    <br>
+    <small style="color: red">Only xlsx and csv file required<br></small>
+    <small style="color: red">The format must be :-Name,Email,Phone Number,Address<br></small>
+
 
         <div class="seperator"><b>or</b></div>
 
@@ -107,7 +118,7 @@
                 {%for contact in c%}
                 <div class="entry">
 
-                    <div class="indexNoCol">{{contact.c_email}}</div>
+                    <div class="indexNoCol">{{contact.contact_id}}</div>
                     <div class="nameCol">{{contact.c_name}}</div>
                     <div class="firstNameCol">{{contact.c_first_name}}</div>
                     <div class="middleNameCol">{{contact.c_middle_name}}</div>
