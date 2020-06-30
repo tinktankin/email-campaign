@@ -1,9 +1,14 @@
+import os
+
 from cryptography.fernet import Fernet
 from django.contrib.auth.hashers import check_password, make_password
 from django.http import HttpResponse, JsonResponse
 from django.shortcuts import render, redirect
 from django.utils.datetime_safe import datetime
 from emailhandle import settings
+import json
+import pandas as pd
+import numpy as np
 from accounting.models import Account, Accountdetail, EmailAccounts, ContactlistFile, Contactlist, Session
 # Create your views here.
 from accounting.views import check_database,findkey
@@ -24,11 +29,12 @@ def emailaccountsetting(request):
         name=name[0]
         if EmailAccounts.objects.filter(e_id=k).exists():
             e=EmailAccounts.objects.filter(e_id=k)
-            para={'username':a.username,'pr':a.provider,'email':a.email,'name':name,'account':True,'e':e,'id':a.id,'default':acdetail.defaultaccount,'form':form}
+            para={'username':a.username,'pr':a.provider,'email':a.email,'image':acdetail.profile,'name':name,'account':True,'e':e,'id':a.id,'default':acdetail.defaultaccount,'form':form}
         else:
-            para={'username':a.username,'email':a.email,'pr':a.provider,'name':name,'account':False,'id':a.id,'default':acdetail.defaultaccount,'form':form}
+            para={'username':a.username,'email':a.email,'pr':a.provider,'image':acdetail.profile,'name':name,'account':False,'id':a.id,'default':acdetail.defaultaccount,'form':form}
 
         if check=="account":
+
             return render(request,'emailaccount/addemail.html',para)
         else:
             return render(request,'emailaccount/addemail.html',para)
@@ -78,15 +84,31 @@ def mailbox(request):
         return redirect('accounting:login')
 def contactfile(request):
     type=request.POST.get('type')
-    if type=='start' and request.FILES['myfile']:
+    if type== 'start' and request.FILES['myfile']:
         id=request.POST.get('id')
         ids=int(id)
         a=Account.objects.get(pk=ids)
         contactlistfile=ContactlistFile()
         contactlistfile.cf_id=a
         photo=request.FILES['myfile']
-        print(photo)
+        k=photo.name
+        e=k.split('.')[-1]
+        print(e)
+        if e=="csv" or e=="xlsx":
+            print("pass")
+        else:
+            return redirect('emailaccount:contact')
         a.contactlistfile_set.create(myfile=photo,date=datetime.now())
+        last_object=ContactlistFile.objects.filter(cf_id=ids).last()
+        last_id=last_object.id
+        l=ContactlistFile.objects.get(pk=last_id)
+        print(l.myfile.path)
+        if e=="csv":
+            csvs="csv"
+            k=xlxs(ids,last_id,"csv")
+        elif e=="xlsx":
+            xl="xlsx"
+            k=xlxs(ids,last_id,"xlxs")
         return redirect('emailaccount:contact')
 
     else:
@@ -98,6 +120,7 @@ def userphoto(request):
         id=request.POST.get('id')
         a=Accountdetail.objects.get(acc_id=id)
         a.profile=request.FILES['profile']
+
         a.save()
         return redirect('emailaccount:accountsetting')
     else:
@@ -195,8 +218,14 @@ def makedefault(request):
 def remove(request):
     type=request.POST.get('type')
     if type=="start":
+        if not request.session.session_key:
+            request.session.save()
+        s=request.session._session_key
+        k=findkey(s)
         id=request.POST.get('button')
         e=EmailAccounts.objects.filter(pk=id)
+        email=EmailAccounts.objects.get(pk=id)
+        account_detail=Accountdetail.objects.get(acc_id=k)
         if email.e_email==account_detail.defaultaccount:
             account_detail.defaultaccount=None
             account_detail.save()
@@ -290,12 +319,13 @@ def addcontacts(request):
         doi=request.POST.get('dateofincorporation')
         emp=request.POST.get('employees')
         if Contactlist.objects.filter(c_id=id,c_email=email).exists():
+            c=Contactlist.objects.filter(c_id=id)
             a=Account.objects.get(pk=id)
             n=a.name
             name=n.split(' ')
             name=name[0]
             form=FileUploadForm()
-            para={'username':a.username,'email':a.email,'name':name,'id':a.id,'form':form,'error':'alreadyexists'}
+            para={'username':a.username,'email':a.email,'name':name,'id':a.id,'form':form,'c':c,'error':'alreadyexists'}
             return render(request,'emailaccount/contact.html',para)
         else:
             a=Account.objects.get(pk=id)
@@ -306,6 +336,10 @@ def addcontacts(request):
                                      c_college=college,c_ctc=ctc,c_email=email,c_alternativeemailid=aemailid,c_phone=phone,c_alternativephone=aphone,c_city=city,c_address=add,
                                      c_state=state,c_country=country,c_zip=zip,c_industry=industry,c_keyskills=keyskills,c_totalexperience=tex,c_yearbusiness=yob,c_turnover=turnover,
                                      c_dateofincorportaion=doi,c_employess=emp,c_addon=datetime.now())
+            last_objects=Contactlist.objects.filter(c_id=id).last()
+            i=last_objects.id
+            last_objects.contact_id=i
+            last_objects.save()
             return redirect('emailaccount:contact')
 
     else:
@@ -328,3 +362,108 @@ def groups(request):
             return render(request,'emailaccount/groups.html',para)
     else:
         return redirect('accounting:login')
+
+def xlxs(ids,last_id,filetype):
+
+    a=Account.objects.get(pk=ids)
+    c=ContactlistFile.objects.get(pk=last_id)
+    url=c.myfile.path
+    if filetype=="xlxs":
+        df = pd.read_excel(url)
+    else:
+        df=pd.pd.read_csv(url)    
+    list=[]
+    if 'Name' in df.columns:
+        df2 = df[:]["Name"]
+        list.append(df2)
+    else:
+       return 0
+
+    if 'Email' in df.columns:
+        df3 = df[:]["Email"]
+        list.append(df3)
+    else:
+        return 0
+    if "Phone" in df.columns:
+        df24= df[:]["Phone"]
+        list.append(df24)
+    else:
+        df24= None
+
+    if "Address" in df.columns:
+        df26= df[:]["Address"]
+        list.append(df26)
+    else:
+        df26= None   
+    result = pd.concat(list, axis=1, sort= False)
+    t=result.values.tolist()   
+    if df24 is None and df26 is None:
+        phone=None 
+        address=None
+        for i in range(0,len(t)):
+            k=t[i][1]
+            n=t[i][0]
+            if Contactlist.objects.filter(c_id=ids,c_email=k).exists():
+                print("ok")
+            else:    
+                contactlist=Contactlist()
+                contactlist.c_id=a
+                a.contactlist_set.create(c_name=n,c_email=k,c_phone=phone,c_address=address,c_addon=datetime.now())
+                last_objects=Contactlist.objects.filter(c_id=ids).last()
+                i=last_objects.id
+                last_objects.contact_id=i
+                last_objects.save()
+        return "done"        
+    elif df24 is None:
+        for i in range(0,len(t)):
+            k=t[i][1]
+            n=t[i][0]
+            p=t[i][2]
+            if Contactlist.objects.filter(c_id=ids,c_email=k).exists():
+                print("ok")
+            else:    
+                contactlist=Contactlist()
+                contactlist.c_id=a
+                a.contactlist_set.create(c_name=n,c_email=k,c_phone=None,c_address=p,c_addon=datetime.now())
+                last_objects=Contactlist.objects.filter(c_id=ids).last()
+                i=last_objects.id
+                last_objects.contact_id=i
+                last_objects.save()
+        return "done"        
+    elif df26 is None:
+        for i in range(0,len(t)):
+            k=t[i][1]
+            n=t[i][0]
+            p=t[i][2]
+            if Contactlist.objects.filter(c_id=ids,c_email=k).exists():
+                print("ok")
+            else:    
+                contactlist=Contactlist()
+                contactlist.c_id=a
+                a.contactlist_set.create(c_name=n,c_email=k,c_phone=p,c_address=None,c_addon=datetime.now())
+                last_objects=Contactlist.objects.filter(c_id=ids).last()
+                i=last_objects.id
+                last_objects.contact_id=i
+                last_objects.save()
+        return "done"        
+    else:
+        for i in range(0,len(t)):
+            k=t[i][1]
+            n=t[i][0]
+            p=t[i][2]
+            r=t[i][3]
+            if Contactlist.objects.filter(c_id=ids,c_email=k).exists():
+                print("ok")
+            else:    
+                contactlist=Contactlist()
+                contactlist.c_id=a
+                a.contactlist_set.create(c_name=n,c_email=k,c_phone=p,c_address=None,c_addon=datetime.now())
+                last_objects=Contactlist.objects.filter(c_ids=id).last()
+                i=last_objects.id
+                last_objects.contact_id=i
+                last_objects.save()
+        return "done"    
+        #coll.insert_one(eval(k))
+        
+        #print("Success")
+    
