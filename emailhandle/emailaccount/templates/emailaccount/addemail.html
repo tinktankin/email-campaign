@@ -17,8 +17,45 @@
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Racing+Sans+One&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
     <title>Account Details</title>
+    <style type="text/css">
+    	.bg-modal{
+    		width: 100%;
+    		height: 100%;
+    		background-color: rgba(0,0,0,0.7);
+    		position: absolute;
+    		top: 0;
+    		display: flex;
+    		justify-content: center;
+    		align-items: center;
+    		display: none;
+    	}
+    	.modal-content{
+    		width: 500px;
+    		height: 400px;
+    		background-color: white;
+    		border-radius: 4px;
+    		position: relative;
+    		font-size: 15px;
+    	}
+    	.close{
+    		position: absolute;
+    		top: 0;
+    		right: 14px;
+    		font-size: 42px;
+    		transform: rotate(45deg);
+    		cursor: pointer;
+    	}
+    	.apppass-steps{
+    		padding: 8px;
+    		padding-bottom: 10px;
+    	}
+    </style>
 </head>
 
 <body>
@@ -94,7 +131,7 @@
         </script>
         {%endif%}
         <div class="addemailid">
-            <label class="sectionlabel">Add Email ID</label>
+            <label class="sectionlabel">Add Email ID <a class="fas fa-info-circle" id="info" style="font-size:18px ; color: black"></a></label>
             <hr class="hr3">
             <form method="post" name="My" onsubmit="return Upload()">
                 {%csrf_token%}
@@ -184,14 +221,48 @@
         </div>
 
     </div>
+    <div class="bg-modal">
+    	<div class="modal-content">
+    		<div class="close">+</div>
+    		<div>
+    			<h3 style="margin-left: 10px;">How to create an app password</h3>
+    			<hr class="hr3">
+    			<div class="apppass-steps">
+    			<p>
+    				Please Allow Us to use your Gmail for sending and receiving mail without giving your Gmail Password. This will be achieved by creating the application password for our app. <a href="https://support.google.com/accounts/answer/185833?hl=en-GB">Learn More.</a><br>
+    				<br>
+					Steps to create the app password<br>
+					<br>
+					1. Go to <a href="https://myaccount.google.com/">account setting</a> with your account.<br>
+					2. In left tabs, choose Security.<br>
+					3. Under Signing in to Google, Choose App Password.<br>
+					4. Confirm your identity.<br>
+					5. Choose Custom.<br>
+					6. Write TinkComm as the name and Generate the Password.<br>
+					7. Copy the password and paste the text below.<br>
+					8. Submit!<br>
+					<br>
+    			</p>
+    		    </div>
+    		</div>
+    	</div>
+    </div>
+    <script type="text/javascript">
+    	document.getElementById("info").addEventListener("click", function() {
+    		document.querySelector(".bg-modal").style.display = 'flex';
 
+    	});
+    	document.querySelector(".close").addEventListener("click", function(){
+    		document.querySelector(".bg-modal").style.display = 'none';
+    	});
+    </script>
     <script src="{%static 'js/account/account.js'%}"></script>
-       <script src="{%static 'js/account/addemail.js'%}"></script>
-<script src="{%static 'js/account/ajax.js'%}"></script>
-<script src="{%static 'js/upload.js'%}"></script>
-<script src="{%static 'js/chnagename.js'%}"></script>
-<script src="{%static 'js/emailpasswordchange.js'%}"></script>
-<script src="{%static 'js/remove.js'%}"></script>
+    <script src="{%static 'js/account/addemail.js'%}"></script>
+	<script src="{%static 'js/account/ajax.js'%}"></script>
+	<script src="{%static 'js/upload.js'%}"></script>
+	<script src="{%static 'js/chnagename.js'%}"></script>
+	<script src="{%static 'js/emailpasswordchange.js'%}"></script>
+	<script src="{%static 'js/remove.js'%}"></script>
 
 </body>
 
