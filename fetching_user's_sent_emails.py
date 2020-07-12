@@ -5,29 +5,32 @@ import webbrowser
 import os
 
 
-server="imap.gmail.com"
+username="" # use your email id here
+password="" # use your App Password you generated above here.
+imap = imaplib.IMAP4_SSL("imap.gmail.com")
+result=imap.login(username, password)
+imap.select('"[Gmail]/All Mail"',readonly=True) # Use "[Gmail]/Sent Mails" for fetching mails from Sent Mails. 
 
-username=""
-password=""
+response, messages = imap.search(None, 'UnSeen')
+messages=messages[0].split()
 
-imap = imaplib.IMAP4_SSL(server)
+latest=int(messages[-1])
+oldest=int(messages[0])
 
-imap.login(username,password)
+for i in range(latest,latest-20,-1):
 
-res,messages=imap.select('"[Gmail]/Sent Mail"')
-
-messages=int(messages[0])
-
-for i in range(messages, messages-20, -1):
     res, msg = imap.fetch(str(i), "(RFC822)")
+    
     for response in msg:
-        if isinstance(response, tuple):
-            msg = email.message_from_bytes(response[1])
-            From=msg["From"]
-            subject=msg["Subject"]
-            print(From," ",subject)
-
-
+        if isinstance(response,tuple):
+           msg=email.message_from_bytes(response[1])
+           print(msg["Date"])
+           print(msg["From"])
+           print(msg["Subject"])
+    for part in msg.walk():
+        if part.get_content_type() == "text/plain":
+            body = part.get_payload(decode=True)
+            print(f'Body: {body.decode("UTF-8")}',)
 
 
 
